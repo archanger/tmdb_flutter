@@ -33,7 +33,7 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   test: ^1.5.3
-  mock_web_server: ^4.0.0
+  mockito: ^4.0.0
 
 
 

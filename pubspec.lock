@@ -189,10 +189,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.6+2"
-  mock_web_server:
+  mockito:
     dependency: "direct dev"
     description:
-      name: mock_web_server
+      name: mockito
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"

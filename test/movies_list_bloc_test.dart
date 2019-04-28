@@ -1,13 +1,18 @@
+import 'package:mockito/mockito.dart';
 import 'package:movies/models/movie.dart';
 import 'package:movies/movies_list/movies_list_bloc.dart';
 import 'package:test/test.dart';
 
+import 'mocks.dart';
+
 void main() {
   group('MoviesListBloc', () {
     test('returns a list of movies', () {
-      final subject = MoviesListBloc();
+      final mockService = MoviesServiceMock();
+      when(mockService.fetchUpcomingMovies()).thenAnswer((_) => Future.value(_fakeMovies()));
+      final subject = MoviesListBloc(service: mockService);
 
-      expect(subject.allMovies, emits(_fakeMovies()));
+      expect(subject.allMovies, emitsInOrder([[], _fakeMovies()]));
     });
   });
 }
