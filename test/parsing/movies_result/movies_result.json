@@ -1,0 +1,23 @@
+{
+    "results": [{
+        "vote_count": 28,
+        "id": 438674,
+        "video": false,
+        "vote_average": 6.6,
+        "title": "Закатать в асфальт",
+        "popularity": 70.933,
+        "poster_path": "/c8uwOiMa3sTBEpuXExsu6EGObIB.jpg",
+        "original_language": "en",
+        "original_title": "Dragged Across Concrete",
+        "genre_ids": [
+            18,
+            80,
+            28,
+            53
+        ],
+        "backdrop_path": "/sZUbg9K8zGiUmeVYSlUNelVcuzM.jpg",
+        "adult": false,
+        "overview": "Двое полицейских, Риджман и Энтони, отстранены от работы из-за слитого в сеть видео, на котором напарники выбивают признание из подозреваемого жесткими методами. Не имея другого выбора, они решают найти работу в криминальном подполье, где им готовят кровавую месть.",
+        "release_date": "2019-04-18"
+    }]
+}

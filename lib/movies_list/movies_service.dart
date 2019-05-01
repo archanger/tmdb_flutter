@@ -10,7 +10,7 @@ class MoviesService {
   Future<List<Movie>> fetchUpcomingMovies() async {
     final response = await http.get(_url);
     if (response.statusCode == 200) {
-      MoviesResult movies = serializers.deserializeWith(
+      final movies = serializers.deserializeWith(
         MoviesResult.serializer,
         json.decode(response.body),
       );
