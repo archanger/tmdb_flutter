@@ -20,8 +20,8 @@ class FakeServer {
     await for (HttpRequest request in _server) {
       try {
         switch (request.uri.path) {
-          case '/movies':
-            var json = File(Directory.current.path + '/movies_list.json').readAsStringSync();
+          case '/movie/upcoming':
+            var json = File(Directory.current.path + '/web_server/movies_list.json').readAsStringSync();
             request.response
               ..write(json)
               ..close();
@@ -37,6 +37,7 @@ class FakeServer {
           ..statusCode = HttpStatus.internalServerError
           ..write(e.toString())
           ..close();
+        print('Error: ' + e);
       }
 
       print('Path: ' + request.uri.path);

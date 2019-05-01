@@ -1,7 +1,12 @@
-import 'package:equatable/equatable.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 
-class Movie extends Equatable {
-  final String title;
+part 'movie.g.dart';
 
-  Movie(this.title);
+abstract class Movie implements Built<Movie, MovieBuilder> {
+  String get title;
+
+  Movie._();
+  static Serializer<Movie> get serializer => _$movieSerializer;
+  factory Movie([void Function(MovieBuilder) updates]) = _$Movie;
 }
