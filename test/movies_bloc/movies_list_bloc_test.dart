@@ -18,7 +18,13 @@ void main() {
 }
 
 List<Movie> _fakeMovies() => [
-      Movie((b) => b.title = 'Закатать в асфальт'),
-      Movie((b) => b.title = 'Удивительный мир Марвена'),
-      Movie((b) => b.title = 'Хеллбой'),
+      Movie((b) => b
+        ..title = 'Закатать в асфальт'
+        ..posterPath = 'poster_path'),
+      Movie((b) => b
+        ..title = 'Удивительный мир Марвена'
+        ..posterPath = 'poster_path'),
+      Movie((b) => b
+        ..title = 'Хеллбой'
+        ..posterPath = 'poster_path'),
     ];

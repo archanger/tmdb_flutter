@@ -18,4 +18,6 @@ void main() {
   });
 }
 
-Movie fakeMovie() => Movie((b) => b.title = 'Закатать в асфальт');
+Movie fakeMovie() => Movie((b) => b
+  ..title = 'Закатать в асфальт'
+  ..posterPath = '/c8uwOiMa3sTBEpuXExsu6EGObIB.jpg');
