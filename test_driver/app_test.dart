@@ -9,13 +9,13 @@ void main() {
     FakeServer server = FakeServer();
 
     setUpAll(() async {
-      await application.start();
       server.start();
+      await application.start();
     });
 
     tearDownAll(() async {
-      application.stop();
       server.stop();
+      application.stop();
     });
 
     test('has a list of movies', () async {
