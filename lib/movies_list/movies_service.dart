@@ -21,5 +21,10 @@ class MoviesService {
     return [];
   }
 
-  Uri get _url => Uri.parse(constants.baseURL + '/movie/upcoming?api_key=27f041b87264c855c1f8d198c9d73cfe');
+  Uri get _url => Uri.parse(constants.baseURL +
+      '/discover/movie?api_key=27f041b87264c855c1f8d198c9d73cfe&region=RU&release_date.gte=$_gteDateString');
+  String get _gteDateString {
+    final now = DateTime.now();
+    return '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+  }
 }
