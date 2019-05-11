@@ -1,5 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
+import 'package:movies/movies_list/movies_list_page.dart';
 
 class TMDBDateTimeSerializer implements PrimitiveSerializer<DateTime> {
   @override
@@ -9,7 +10,7 @@ class TMDBDateTimeSerializer implements PrimitiveSerializer<DateTime> {
 
   @override
   Object serialize(Serializers serializers, DateTime object, {FullType specifiedType = FullType.unspecified}) {
-    return '${object.year}-${object.month.toString().padLeft(2, '0')}-${object.day.toString().padLeft(2, '0')}';
+    return DateTimeFormatters.tmdbDateFrom(object);
   }
 
   @override

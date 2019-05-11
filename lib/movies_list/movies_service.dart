@@ -4,6 +4,7 @@ import 'package:movies/models/movie.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies/models/movies_result.dart';
 import 'package:movies/models/serializers.dart';
+import 'package:movies/movies_list/movies_list_page.dart';
 import 'package:movies/tools/constants.dart';
 
 class MoviesService {
@@ -22,9 +23,9 @@ class MoviesService {
   }
 
   Uri get _url => Uri.parse(constants.baseURL +
-      '/discover/movie?api_key=27f041b87264c855c1f8d198c9d73cfe&region=RU&release_date.gte=$_gteDateString');
+      '/discover/movie?api_key=27f041b87264c855c1f8d198c9d73cfe&region=RU&language=ru&release_date.gte=$_gteDateString');
   String get _gteDateString {
     final now = DateTime.now();
-    return '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+    return DateTimeFormatters.tmdbDateFrom(now);
   }
 }
