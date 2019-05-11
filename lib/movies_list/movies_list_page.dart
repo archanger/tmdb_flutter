@@ -104,8 +104,7 @@ class _MovieListItemContent extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Color(0xFF1D292E),
-          border: Border.all(color: Color(0xa0ffffff)),
+          border: Border.all(color: Color(0x0affffff)),
           borderRadius: BorderRadius.all(Radius.circular(3)),
         ),
         child: Column(
@@ -113,17 +112,17 @@ class _MovieListItemContent extends StatelessWidget {
           children: [
             Text(
               _movie.title,
-              style: Theme.of(context).textTheme.headline,
+              style: Theme.of(context).textTheme.title,
             ),
             SizedBox(height: 8),
             Text(
               'raiting: ${_movie.voteAverage}',
-              style: Theme.of(context).textTheme.subhead,
+              style: Theme.of(context).textTheme.body2,
             ),
             SizedBox(height: 8),
             Text(
               'Release: ${DateTimeFormatters.tmdbDateFrom(_movie.releaseDate)}',
-              style: Theme.of(context).textTheme.subhead,
+              style: Theme.of(context).textTheme.body2,
             )
           ],
         ),
