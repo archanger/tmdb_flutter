@@ -19,5 +19,8 @@ void main() {
 }
 
 Movie fakeMovie() => Movie((b) => b
+  ..id = 438674
+  ..voteAverage = 6.6
   ..title = 'Закатать в асфальт'
-  ..posterPath = '/c8uwOiMa3sTBEpuXExsu6EGObIB.jpg');
+  ..posterPath = '/c8uwOiMa3sTBEpuXExsu6EGObIB.jpg'
+  ..releaseDate = DateTime(2019, 4, 18));

@@ -19,12 +19,21 @@ void main() {
 
 List<Movie> _fakeMovies() => [
       Movie((b) => b
+        ..id = 1
+        ..voteAverage = 3.4
         ..title = 'Закатать в асфальт'
-        ..posterPath = 'poster_path'),
+        ..posterPath = 'poster_path'
+        ..releaseDate = DateTime(2019, 5, 12)),
       Movie((b) => b
+        ..id = 2
+        ..voteAverage = 2.2
         ..title = 'Удивительный мир Марвена'
-        ..posterPath = 'poster_path'),
+        ..posterPath = 'poster_path'
+        ..releaseDate = DateTime(2019, 2, 2)),
       Movie((b) => b
+        ..id = 3
         ..title = 'Хеллбой'
-        ..posterPath = 'poster_path'),
+        ..voteAverage = 8.9
+        ..posterPath = 'poster_path'
+        ..releaseDate = DateTime(2019, 8, 22)),
     ];
