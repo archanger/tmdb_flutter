@@ -27,6 +27,7 @@
 .pub/
 /build/
 *.g.dart
+**/coverage
 
 # Android related
 **/android/**/gradle-wrapper.jar

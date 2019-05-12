@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies/models/movie.dart';
 import 'package:movies/movies_list/movies_list_bloc.dart';
+import 'package:movies/movies_list/movies_list_state.dart';
 
 class MoviesListPage extends StatefulWidget {
   final MoviesListBloc _bloc;
@@ -23,22 +24,22 @@ class _MoviesListPageState extends State<MoviesListPage> {
         title: Text('Upcoming Movies'),
       ),
       body: Center(
-        child: StreamBuilder<List<Movie>>(
+        child: StreamBuilder<MoviesListState>(
             stream: bloc.allMovies,
             builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return Container();
+              if (!snapshot.hasData || snapshot.data.movies.isEmpty) {
+                return Container(); // TODO: replace for a loading indicator
               }
 
               final data = snapshot.data;
 
               return ListView.builder(
                 key: Key('movies_list'),
-                itemCount: data.length,
+                itemCount: data.movies.length, // TODO: calculate count depending on fetching availability
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: EdgeInsets.only(top: index == 0 ? 20 : 0),
-                    child: MovieListItem(movie: data[index]),
+                    child: MovieListItem(movie: data.movies[index]),
                   );
                 },
               );

@@ -21,10 +21,6 @@
         "release_date": "2019-04-18"
     }],
     "page": 1,
-    "total_results": 24,
-    "dates": {
-        "maximum": "2019-04-21",
-        "minimum": "2019-04-06"
-    },
-    "total_pages": 2
+    "total_results": 1,
+    "total_pages": 1
 }

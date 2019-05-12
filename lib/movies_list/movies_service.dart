@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:movies/models/movie.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies/models/movies_result.dart';
@@ -8,22 +9,23 @@ import 'package:movies/movies_list/movies_list_page.dart';
 import 'package:movies/tools/constants.dart';
 
 class MoviesService {
-  Future<List<Movie>> fetchUpcomingMovies() async {
-    final response = await http.get(_url);
+  Future<MoviesResult> fetchUpcomingMovies({int page = 1}) async {
+    final response = await http.get(_url(page));
     if (response.statusCode == 200) {
-      final movies = serializers.deserializeWith(
+      final result = serializers.deserializeWith(
         MoviesResult.serializer,
         json.decode(response.body),
       );
 
-      return movies.results.toList();
+      return result;
     }
 
-    return [];
+    return MoviesResult.empty();
   }
 
-  Uri get _url => Uri.parse(constants.baseURL +
-      '/discover/movie?api_key=27f041b87264c855c1f8d198c9d73cfe&region=RU&language=ru&release_date.gte=$_gteDateString');
+  Uri _url(int page) => Uri.parse(constants.baseURL +
+      '/discover/movie?api_key=27f041b87264c855c1f8d198c9d73cfe&region=RU&language=ru&release_date.gte=$_gteDateString&page=$page');
+
   String get _gteDateString {
     final now = DateTime.now();
     return DateTimeFormatters.tmdbDateFrom(now);

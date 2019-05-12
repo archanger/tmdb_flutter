@@ -18,7 +18,13 @@ void main() {
       json.decode(jsonString),
     );
 
-    expect(result, MoviesResult((b) => b.results = _fakeMovies()));
+    expect(
+        result,
+        MoviesResult((b) => b
+          ..page = 1
+          ..totalResults = 1
+          ..totalPages = 1
+          ..results = _fakeMovies()));
   });
 }
 
