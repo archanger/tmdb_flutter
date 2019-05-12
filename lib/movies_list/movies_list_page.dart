@@ -26,25 +26,21 @@ class _MoviesListPageState extends State<MoviesListPage> {
       ),
       body: Center(
         child: StreamBuilder<MoviesListState>(
-            stream: bloc.allMovies,
-            builder: (context, snapshot) {
-              if (!snapshot.hasData || snapshot.data.movies.isEmpty) {
-                return Container(); // TODO: replace for a loading indicator
-              }
+          stream: bloc.allMovies,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData || snapshot.data.movies.isEmpty) {
+              return _loading();
+            }
 
-              final data = snapshot.data;
+            final data = snapshot.data;
 
-              return ListView.builder(
-                key: Key('movies_list'),
-                itemCount: data.movies.length, // TODO: calculate count depending on fetching availability
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(top: index == 0 ? 20 : 0),
-                    child: MovieListItem(movie: data.movies[index]),
-                  );
-                },
-              );
-            }),
+            return ListView.builder(
+              key: Key('movies_list'),
+              itemCount: _itemsCount(data),
+              itemBuilder: (_, index) => _listItem(data, index),
+            );
+          },
+        ),
       ),
     );
   }
@@ -53,6 +49,23 @@ class _MoviesListPageState extends State<MoviesListPage> {
   void dispose() {
     bloc.dispose();
     super.dispose();
+  }
+
+  Widget _loading() {
+    return Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  int _itemsCount(MoviesListState state) => state.movies.length + (state.hasAnotherBatch ? 1 : 0);
+
+  Widget _listItem(MoviesListState state, int index) {
+    return index >= state.movies.length
+        ? _loading()
+        : Padding(
+            padding: EdgeInsets.only(top: index == 0 ? 20 : 0),
+            child: MovieListItem(movie: state.movies[index]),
+          );
   }
 
   MoviesListBloc get bloc => widget._bloc;
