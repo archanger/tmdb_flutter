@@ -1,6 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
-import 'package:movies/movies_list/movies_list_page.dart';
+import 'package:movies/tools/date_time_formatters.dart';
 
 class TMDBDateTimeSerializer implements PrimitiveSerializer<DateTime> {
   @override

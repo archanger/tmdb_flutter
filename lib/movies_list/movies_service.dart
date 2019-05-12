@@ -1,12 +1,10 @@
 import 'dart:convert';
 
-import 'package:built_collection/built_collection.dart';
-import 'package:movies/models/movie.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies/models/movies_result.dart';
 import 'package:movies/models/serializers.dart';
-import 'package:movies/movies_list/movies_list_page.dart';
 import 'package:movies/tools/constants.dart';
+import 'package:movies/tools/date_time_formatters.dart';
 
 class MoviesService {
   Future<MoviesResult> fetchUpcomingMovies({int page = 1}) async {
