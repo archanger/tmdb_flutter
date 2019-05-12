@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies/models/movie.dart';
-import 'package:movies/movies_list/movie_list_item_widget.dart';
+import 'package:movies/movies_list/movie_list_item.dart';
 import 'package:movies/movies_list/movies_list_bloc.dart';
 import 'package:movies/movies_list/movies_list_state.dart';
 
@@ -18,6 +17,8 @@ class MoviesListPage extends StatefulWidget {
 }
 
 class _MoviesListPageState extends State<MoviesListPage> {
+  final _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,10 +35,14 @@ class _MoviesListPageState extends State<MoviesListPage> {
 
             final data = snapshot.data;
 
-            return ListView.builder(
-              key: Key('movies_list'),
-              itemCount: _itemsCount(data),
-              itemBuilder: (_, index) => _listItem(data, index),
+            return NotificationListener<ScrollNotification>(
+              onNotification: _handleScrollNotification,
+              child: ListView.builder(
+                key: Key('movies_list'),
+                controller: _scrollController,
+                itemCount: _itemsCount(data),
+                itemBuilder: (_, index) => _listItem(data, index),
+              ),
             );
           },
         ),
@@ -69,4 +74,14 @@ class _MoviesListPageState extends State<MoviesListPage> {
   }
 
   MoviesListBloc get bloc => widget._bloc;
+
+  bool _handleScrollNotification(ScrollNotification notification) {
+    print('Extent after:: ${_scrollController.position.extentAfter}');
+    if (notification is ScrollEndNotification && _scrollController.position.extentAfter <= 80) {
+      // TODO: find another way
+      bloc.fetchNextPage();
+    }
+
+    return false;
+  }
 }

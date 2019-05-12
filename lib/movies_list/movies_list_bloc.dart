@@ -22,8 +22,8 @@ class MoviesListBloc {
     _service.fetchUpcomingMovies(page: _currentPage).then((result) {
       _currentState = MoviesListState(
         (b) => b
-          ..movies = ListBuilder(result.results)
-          ..hasAnotherBatch = result.page != result.totalPages,
+          ..movies = ListBuilder(_currentState.movies + result.results)
+          ..hasAnotherBatch = result.page < result.totalPages,
       );
 
       _moviesFetcher.sink.add(_currentState);
