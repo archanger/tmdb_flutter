@@ -16,12 +16,14 @@ class Application {
     var secondItem = find.text('Удивительный мир Марвена');
     var thirdItem = find.text('Хеллбой');
     var fourthItem = find.text('Нежная рука закона');
-    var listView = find.byValueKey('movies_list');
+    var fifthItem = find.text('Люби их всех');
+
     await _driver.waitFor(firstItem);
     await _driver.waitFor(secondItem);
     await _driver.waitFor(thirdItem);
-    // await _driver.scroll(fourthItem, 0, 1000, Duration(seconds: 5));
 
+    var listView = find.byValueKey('movies_list');
     await _driver.scrollUntilVisible(listView, fourthItem, dyScroll: -300);
+    await _driver.scrollUntilVisible(listView, fifthItem, dyScroll: -500);
   }
 }

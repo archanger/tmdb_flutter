@@ -36,10 +36,15 @@ class FakeServer {
 }
 
 Future<dynamic> discoverMovies(HttpRequest request) async {
-  var json = File(Directory.current.path + '/web_server/movies_list.json').readAsStringSync();
-  request.response
-    ..write(json)
-    ..close();
+  final page = int.tryParse(request.uri.queryParameters['page'] ?? '1');
+  if (page > 2) {
+    _emptyMoviesList(request, page);
+  } else {
+    var json = File(Directory.current.path + '/web_server/movies_list_$page.json').readAsStringSync();
+    request.response
+      ..write(json)
+      ..close();
+  }
 }
 
 Future<dynamic> notFound(HttpRequest request) async {
@@ -55,4 +60,17 @@ Future<dynamic> internalError(dynamic error, HttpRequest request) async {
     ..write(error.toString())
     ..close();
   print('Error: ' + error);
+}
+
+Future<void> _emptyMoviesList(HttpRequest request, int page) async {
+  request.response
+    ..write('''
+{
+  "page": $page,
+  "total_results": 24,
+  "total_pages": 2,
+  "results": []
+}
+      ''')
+    ..close();
 }

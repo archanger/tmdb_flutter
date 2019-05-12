@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
 ThemeData tmdbTheme(BuildContext context) {
   return Theme.of(context).copyWith(
     brightness: Brightness.dark,
-    // accentColor: Color(0xff1D292E),
     primaryColor: Color(0xff151F25),
     canvasColor: Color(0xff1D292E),
     scaffoldBackgroundColor: Color(0xff19272E),
