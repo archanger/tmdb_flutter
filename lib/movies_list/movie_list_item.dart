@@ -27,7 +27,7 @@ class MovieListItem extends StatelessWidget {
               ],
             ),
           ),
-          MovieItemPoster(url: 'https://image.tmdb.org/t/p/w185${_movie.posterPath}'),
+          MovieItemPoster(posterPath: _movie.posterPath),
         ],
       ),
     );
