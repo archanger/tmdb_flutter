@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies/movies_list/movies_list_bloc.dart';
-import 'package:movies/movies_list/movies_list_page.dart';
-import 'package:movies/movies_list/movies_service.dart';
+import 'package:movies/router/router_generator.dart';
+import 'package:movies/splash/splash_page.dart';
 import 'package:movies/tools/constants.dart';
 
 void main(List<String> arguments) {
@@ -15,13 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: tmdbTheme(context),
-        home: MoviesListPage(
-          bloc: MoviesListBloc(
-            service: MoviesService(),
-          ),
-        ));
+      title: 'Flutter Demo',
+      theme: tmdbTheme(context),
+      onGenerateRoute: routerGenerator,
+      home: SplashPage(),
+    );
   }
 }
 
