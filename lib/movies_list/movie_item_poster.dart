@@ -11,7 +11,11 @@ class MovieItemPoster extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 4,
-      child: Container(width: 92, height: 92 / 0.6, child: _image()),
+      child: Container(
+        width: 92,
+        height: 92 / 0.6,
+        child: _image(),
+      ),
     );
   }
 
@@ -21,7 +25,7 @@ class MovieItemPoster extends StatelessWidget {
     }
 
     return Image.network(
-      'https://image.tmdb.org/t/p/w185${_url}',
+      'https://image.tmdb.org/t/p/w185$_url',
       fit: BoxFit.fill,
     );
   }

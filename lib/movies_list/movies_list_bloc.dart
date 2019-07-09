@@ -9,6 +9,7 @@ class MoviesListBloc {
   final _moviesFetcher = BehaviorSubject<MoviesListState>.seeded(MoviesListState.empty());
   var _currentPage = 0;
   var _currentState = MoviesListState.empty();
+  var _isFetching = false;
 
   MoviesListBloc({
     @required MoviesService service,
@@ -18,6 +19,9 @@ class MoviesListBloc {
 
   Observable<MoviesListState> get allMovies => _moviesFetcher.stream;
   void fetchNextPage() {
+    if (_isFetching == true) return;
+    _isFetching = true;
+
     _currentPage++;
     _service.fetchUpcomingMovies(page: _currentPage).then((result) {
       _currentState = MoviesListState(
@@ -26,6 +30,7 @@ class MoviesListBloc {
           ..hasAnotherBatch = result.page < result.totalPages,
       );
 
+      _isFetching = false;
       _moviesFetcher.sink.add(_currentState);
     });
   }

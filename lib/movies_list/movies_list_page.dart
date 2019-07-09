@@ -76,7 +76,6 @@ class _MoviesListPageState extends State<MoviesListPage> {
   MoviesListBloc get bloc => widget._bloc;
 
   bool _handleScrollNotification(ScrollNotification notification) {
-    print('Extent after:: ${_scrollController.position.extentAfter}');
     if (notification is ScrollEndNotification && _scrollController.position.extentAfter <= 80) {
       // TODO: find another way
       bloc.fetchNextPage();
