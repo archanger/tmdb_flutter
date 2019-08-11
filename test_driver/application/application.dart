@@ -12,6 +12,9 @@ class Application {
   }
 
   Future<void> hasAListOfMovies() async {
+    var splash = find.byValueKey('splash_page');
+    await _driver.waitFor(splash);
+
     var firstItem = find.text('Закатать в асфальт');
     var secondItem = find.text('Удивительный мир Марвена');
     var thirdItem = find.text('Хеллбой');
