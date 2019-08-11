@@ -19,7 +19,7 @@ void main() {
     });
 
     test('has a list of movies', () async {
-      await application.hasAListOfMovies();
+      (await application.mainPage().openHome()).checkItems();
     });
   });
 }

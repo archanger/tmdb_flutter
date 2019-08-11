@@ -1,5 +1,7 @@
 import 'package:flutter_driver/flutter_driver.dart';
 
+import '../pages/splash_screen.dart';
+
 class Application {
   FlutterDriver _driver;
 
@@ -11,22 +13,7 @@ class Application {
     _driver?.close();
   }
 
-  Future<void> hasAListOfMovies() async {
-    var splash = find.byValueKey('splash_page');
-    await _driver.waitFor(splash);
-
-    var firstItem = find.text('Закатать в асфальт');
-    var secondItem = find.text('Удивительный мир Марвена');
-    var thirdItem = find.text('Хеллбой');
-    var fourthItem = find.text('Нежная рука закона');
-    var fifthItem = find.text('Люби их всех');
-
-    await _driver.waitFor(firstItem);
-    await _driver.waitFor(secondItem);
-    await _driver.waitFor(thirdItem);
-
-    var listView = find.byValueKey('movies_list');
-    await _driver.scrollUntilVisible(listView, fourthItem, dyScroll: -300);
-    await _driver.scrollUntilVisible(listView, fifthItem, dyScroll: -500);
+  SplashScreen mainPage() {
+    return SplashScreen(_driver);
   }
 }
