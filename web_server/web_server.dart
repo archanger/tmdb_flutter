@@ -25,6 +25,9 @@ class FakeServer {
           case '/discover/movie':
             discoverMovies(request);
             break;
+          case '/configuration':
+            discoverConfig(request);
+            break;
           default:
             notFound(request);
         }
@@ -45,6 +48,13 @@ Future<dynamic> discoverMovies(HttpRequest request) async {
       ..write(json)
       ..close();
   }
+}
+
+Future<dynamic> discoverConfig(HttpRequest request) async {
+  var json = File(Directory.current.path + '/web_server/configuration.json').readAsStringSync();
+  request.response
+    ..write(json)
+    ..close();
 }
 
 Future<dynamic> notFound(HttpRequest request) async {

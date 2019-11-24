@@ -21,7 +21,7 @@ class HomeScreen extends BasePage {
       await driver.waitFor(item);
     }
     for (var item in _scrollableItems) {
-      await driver.scrollUntilVisible(_listView, item, dyScroll: -300);
+      await driver.scrollUntilVisible(_listView, item, dyScroll: -400);
     }
   }
 }
