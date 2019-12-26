@@ -4,9 +4,10 @@ TMDB Client
 
 ## TODO
 
-- Update UIKit
-- Create object to store config
-- Clarify Theming
-- Catch any Exception of http requests
+- Move the Constants to ConfigurationProvider
+- Add Region and language to the Configuration
+- URL-string => Request-class (with decoration, API-request is basic)
 - Replace overuse of built_value and pass a PresentationModel to a widget
+- Catch any Exception of http requests
+- Clarify Theming
 - ...

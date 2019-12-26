@@ -12,7 +12,7 @@ class MovieItemPoster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 4,
+      elevation: 8,
       child: Container(
         width: 92,
         height: 92 / 0.6,

@@ -68,6 +68,7 @@ class _MoviesListPageState extends State<MoviesListPage> {
     return index >= state.movies.length
         ? _loading()
         : Padding(
+            key: Key('${state.movies[index].id}'),
             padding: EdgeInsets.only(top: index == 0 ? 20 : 0),
             child: MovieListItem(movie: state.movies[index]),
           );
