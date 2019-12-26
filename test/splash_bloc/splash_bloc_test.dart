@@ -11,21 +11,19 @@ void main() {
   group('SplashBloc', () {
     test('emits finished loading', () async {
       final mockService = ConfigurationServiceMock();
+      final configMock = ConfigurationProviderMock();
+      final config = Configuration((b) => b
+        ..imageConfiguration = (ImageConfigurationBuilderAdditions.empty())
+        ..changeKeys = ListBuilder([]));
 
       when(mockService.fetchConfig()).thenAnswer(
-        (v) => Future.value(
-          Configuration((b) => b
-            ..imageConfiguration = (ImageConfigurationBuilder()
-              ..baseUrl = ""
-              ..logoSizes = ListBuilder([])
-              ..posterSizes = ListBuilder([])
-              ..profileSizes = ListBuilder([]))
-            ..changeKeys = ListBuilder([])),
-        ),
+        (v) => Future.value(config),
       );
 
-      final subject = SplashBloc(mockService);
+      logInvocations([configMock]);
+      final subject = SplashBloc(mockService, configMock);
       await expectLater(subject.completed, emitsAnyOf([null, emitsDone]));
+      verify(configMock.update(config)).called(1);
     });
   });
 }

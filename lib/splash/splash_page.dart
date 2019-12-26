@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/providers/configuration_provider.dart';
 import 'package:movies/splash/configuration_service.dart';
 import 'package:movies/splash/splash_bloc.dart';
 
@@ -25,7 +26,10 @@ class SplashPage extends StatelessWidget {
 class SplashFactory {
   SplashPage createPage() {
     return SplashPage(
-      bloc: SplashBloc(ConfigurationService()),
+      bloc: SplashBloc(
+        ConfigurationService(),
+        ConfigurationProvider(),
+      ),
     );
   }
 }

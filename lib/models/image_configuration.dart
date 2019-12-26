@@ -28,3 +28,13 @@ abstract class ImageConfiguration implements Built<ImageConfiguration, ImageConf
   ImageConfiguration._();
   factory ImageConfiguration([void Function(ImageConfigurationBuilder) updates]) = _$ImageConfiguration;
 }
+
+extension ImageConfigurationBuilderAdditions on ImageConfigurationBuilder {
+  static ImageConfigurationBuilder empty() {
+    return ImageConfigurationBuilder()
+      ..baseUrl = ""
+      ..logoSizes = ListBuilder([])
+      ..posterSizes = ListBuilder([])
+      ..profileSizes = ListBuilder([]);
+  }
+}
