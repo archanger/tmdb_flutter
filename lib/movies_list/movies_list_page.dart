@@ -76,8 +76,8 @@ class _MoviesListPageState extends State<MoviesListPage> {
   MoviesListBloc get bloc => widget._bloc;
 
   bool _handleScrollNotification(ScrollNotification notification) {
-    if (notification is ScrollEndNotification && _scrollController.position.extentAfter <= 80) {
-      // TODO: find another way
+    final triggerSize = _scrollController.position.maxScrollExtent * 0.9;
+    if (notification is ScrollEndNotification && _scrollController.position.pixels > triggerSize) {
       bloc.fetchNextPage();
     }
 
