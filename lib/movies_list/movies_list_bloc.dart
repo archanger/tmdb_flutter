@@ -17,9 +17,9 @@ class MoviesListBloc {
     fetchNextPage();
   }
 
-  Observable<MoviesListState> get allMovies => _moviesFetcher.stream;
+  Stream<MoviesListState> get allMovies => _moviesFetcher.stream;
   void fetchNextPage() {
-    if (_isFetching == true) return;
+    if (_isFetching) return;
     _isFetching = true;
 
     _currentPage++;

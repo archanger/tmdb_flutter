@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movies/providers/configuration_provider.dart';
 
 class MovieItemPoster extends StatelessWidget {
   final String _url;
+  final _config = ConfigurationProvider();
 
-  const MovieItemPoster({Key key, @required String posterPath})
+  MovieItemPoster({Key key, @required String posterPath})
       : _url = posterPath,
         super(key: key);
 
@@ -25,7 +27,7 @@ class MovieItemPoster extends StatelessWidget {
     }
 
     return Image.network(
-      'https://image.tmdb.org/t/p/w185$_url',
+      '${_config.configuration.imageConfiguration.baseUrl}w185$_url',
       fit: BoxFit.fill,
     );
   }

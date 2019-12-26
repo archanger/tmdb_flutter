@@ -6,10 +6,10 @@ class ConfigurationProvider {
   String get apiKey => '27f041b87264c855c1f8d198c9d73cfe';
 
   update(Configuration configuration) {
-    _config.rebuild((b) => b
-      ..imageConfiguration = configuration.imageConfiguration.toBuilder()
-      ..changeKeys = configuration.changeKeys.toBuilder());
+    _config = configuration;
   }
+
+  Configuration get configuration => _config;
 
   Configuration _config = Configuration(
     (b) => b

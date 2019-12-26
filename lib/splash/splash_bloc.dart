@@ -14,5 +14,5 @@ class SplashBloc {
       _subject.close();
     }).catchError((e) => _subject.addError(e));
   }
-  Observable<void> get completed => _subject.stream;
+  Stream<void> get completed => _subject.stream;
 }
