@@ -15,36 +15,41 @@ void main() {
       when(mockService.fetchUpcomingMovies()).thenAnswer((_) => Future.value(_fakeMoviesState()));
       final subject = MoviesListBloc(service: mockService);
 
-      expect(subject.allMovies, emitsInOrder([MoviesListState.empty(), _expectedState()]));
+      expect(
+          subject.allMovies,
+          emitsInOrder([
+            MoviesListState.empty(),
+            _expectedState(),
+          ]));
     });
   });
 }
 
-MoviesResult _fakeMoviesState() => MoviesResult((b) => b
-  ..page = 1
-  ..totalPages = 1
-  ..totalResults = 3
-  ..results = ListBuilder([
-    Movie((b) => b
-      ..id = 1
-      ..voteAverage = 3.4
-      ..title = 'Закатать в асфальт'
-      ..posterPath = 'poster_path'
-      ..releaseDate = DateTime(2019, 5, 12)),
-    Movie((b) => b
-      ..id = 2
-      ..voteAverage = 2.2
-      ..title = 'Удивительный мир Марвена'
-      ..posterPath = 'poster_path'
-      ..releaseDate = DateTime(2019, 2, 2)),
-    Movie((b) => b
-      ..id = 3
-      ..title = 'Хеллбой'
-      ..voteAverage = 8.9
-      ..posterPath = 'poster_path'
-      ..releaseDate = DateTime(2019, 8, 22)),
-  ]));
+MoviesResult _fakeMoviesState() => MoviesResult(1, 1, 3, [
+      Movie(
+        1,
+        'Закатать в асфальт',
+        'poster_path',
+        3.4,
+        DateTime(2019, 5, 12),
+      ),
+      Movie(
+        2,
+        'Удивительный мир Марвена',
+        'poster_path',
+        2.2,
+        DateTime(2019, 2, 2),
+      ),
+      Movie(
+        3,
+        'Хеллбой',
+        'poster_path',
+        8.9,
+        DateTime(2019, 8, 22),
+      ),
+    ]);
 
-MoviesListState _expectedState() => MoviesListState((b) => b
-  ..hasAnotherBatch = false
-  ..movies = ListBuilder(_fakeMoviesState().results));
+MoviesListState _expectedState() => MoviesListState(
+      _fakeMoviesState().results,
+      false,
+    );

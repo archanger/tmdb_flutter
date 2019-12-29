@@ -1,28 +1,24 @@
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
 import 'package:movies/models/movie.dart';
 
-part 'movies_result.g.dart';
+import 'package:equatable/equatable.dart';
 
-abstract class MoviesResult implements Built<MoviesResult, MoviesResultBuilder> {
-  static Serializer<MoviesResult> get serializer => _$moviesResultSerializer;
+class MoviesResult extends Equatable {
+  final int page;
+  final int totalPages; // @BuiltValueField(wireName: 'total_pages')
 
-  int get page;
+  final int totalResults; //@BuiltValueField(wireName: 'total_results')
 
-  @BuiltValueField(wireName: 'total_pages')
-  int get totalPages;
+  final List<Movie> results;
 
-  @BuiltValueField(wireName: 'total_results')
-  int get totalResults;
+  MoviesResult(
+    this.page,
+    this.totalPages,
+    this.totalResults,
+    this.results,
+  );
 
-  BuiltList<Movie> get results;
+  factory MoviesResult.empty() => MoviesResult(1, 0, 0, []);
 
-  MoviesResult._();
-  factory MoviesResult([void Function(MoviesResultBuilder) updates]) = _$MoviesResult;
-  factory MoviesResult.empty() => MoviesResult((b) => b
-    ..results = ListBuilder<Movie>()
-    ..page = 1
-    ..totalPages = 0
-    ..totalResults = 0);
+  @override
+  List<Object> get props => [results];
 }

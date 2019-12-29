@@ -1,31 +1,29 @@
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:movies/models/movie.dart';
 import 'package:movies/models/movies_result.dart';
-import 'package:movies/models/serializers.dart';
+import 'package:movies/movies_list/movies_service.dart';
 import 'package:test/test.dart';
-
-import '../movie/movie_test.dart';
 
 void main() {
   test('movies_result parsing', () async {
     final jsonString = File('parsing/movies_result/movies_result.json').readAsStringSync();
 
-    final result = serializers.deserializeWith(
-      MoviesResult.serializer,
-      json.decode(jsonString),
-    );
+    final result = MoviesResultDeserializer(jsonString, '').parse();
 
     expect(
-        result,
-        MoviesResult((b) => b
-          ..page = 1
-          ..totalResults = 1
-          ..totalPages = 1
-          ..results = _fakeMovies()));
+      result,
+      MoviesResult(1, 1, 1, _fakeMovies()),
+    );
   });
 }
 
-ListBuilder<Movie> _fakeMovies() => ListBuilder([fakeMovie()]);
+List<Movie> _fakeMovies() => [fakeMovie()];
+
+Movie fakeMovie() => Movie(
+      438674,
+      'Закатать в асфальт',
+      '/c8uwOiMa3sTBEpuXExsu6EGObIB.jpg',
+      6.6,
+      DateTime(2019, 4, 18),
+    );
