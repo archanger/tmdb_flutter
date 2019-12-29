@@ -8,6 +8,6 @@ TMDB Client
 - Add Region and language to the Configuration
 - URL-string => Request-class (with decoration, API-request is basic)
 - Replace overuse of built_value and pass a PresentationModel to a widget
-- Catch any Exception of http requests
+- Catch and handle any Exception of http requests
 - Clarify Theming
 - ...
