@@ -21,6 +21,7 @@ class _MoviesListPageState extends State<MoviesListPage> {
 
   @override
   Widget build(BuildContext context) {
+    bloc.adjustTo(size: 92);
     return Scaffold(
       appBar: AppBar(
         title: Text('Upcoming Movies'),

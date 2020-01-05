@@ -7,7 +7,7 @@ class Movie extends Equatable {
   final num voteAverage; // @BuiltValueField(wireName: 'vote_average')
   final DateTime releaseDate; // @BuiltValueField(wireName: 'release_date')
 
-  Movie(
+  const Movie(
     this.id,
     this.title,
     this.posterPath,

@@ -28,7 +28,7 @@ class SplashFactory {
     return SplashPage(
       bloc: SplashBloc(
         ConfigurationService(),
-        ConfigurationProvider(),
+        globalConfigProvider,
       ),
     );
   }

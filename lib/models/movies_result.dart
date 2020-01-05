@@ -4,13 +4,13 @@ import 'package:equatable/equatable.dart';
 
 class MoviesResult extends Equatable {
   final int page;
-  final int totalPages; // @BuiltValueField(wireName: 'total_pages')
+  final int totalPages;
 
-  final int totalResults; //@BuiltValueField(wireName: 'total_results')
+  final int totalResults;
 
   final List<Movie> results;
 
-  MoviesResult(
+  const MoviesResult(
     this.page,
     this.totalPages,
     this.totalResults,

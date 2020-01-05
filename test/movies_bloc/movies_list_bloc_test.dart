@@ -1,4 +1,3 @@
-import 'package:built_collection/built_collection.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movies/models/movie.dart';
 import 'package:movies/models/movies_result.dart';
@@ -13,7 +12,10 @@ void main() {
     test('returns a list of movies', () {
       final mockService = MoviesServiceMock();
       when(mockService.fetchUpcomingMovies()).thenAnswer((_) => Future.value(_fakeMoviesState()));
-      final subject = MoviesListBloc(service: mockService);
+
+      final configProvider = ConfigurationProviderMock();
+      when(configProvider.posterBaseUrlFitting(0)).thenReturn('');
+      final subject = MoviesListBloc(service: mockService, configProvider: configProvider);
 
       expect(
           subject.allMovies,

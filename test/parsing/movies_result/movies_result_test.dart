@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:movies/models/movie.dart';
@@ -9,7 +10,7 @@ void main() {
   test('movies_result parsing', () async {
     final jsonString = File('parsing/movies_result/movies_result.json').readAsStringSync();
 
-    final result = MoviesResultDeserializer(jsonString, '').parse();
+    final result = MoviesResultDeserializer().parse(json.decode(jsonString));
 
     expect(
       result,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/movies_list/movies_list_bloc.dart';
 import 'package:movies/movies_list/movies_list_page.dart';
 import 'package:movies/movies_list/movies_service.dart';
+import 'package:movies/providers/configuration_provider.dart';
 import 'package:movies/splash/splash_page.dart';
 
 Route<dynamic> routerGenerator(RouteSettings settings) {
@@ -11,6 +12,7 @@ Route<dynamic> routerGenerator(RouteSettings settings) {
         builder: (context) => MoviesListPage(
           bloc: MoviesListBloc(
             service: MoviesService(),
+            configProvider: globalConfigProvider,
           ),
         ),
       );

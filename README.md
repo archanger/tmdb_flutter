@@ -10,5 +10,5 @@ TMDB Client
 - Replace overuse of built_value and pass a PresentationModel to a widget
 - Catch and handle any Exception of http requests
 - Clarify Theming
-- How to parameterize width of an image?
+- How to parameterize width of an image? still the question... should be calculated once on the page
 - ...
