@@ -4,6 +4,7 @@ TMDB Client
 
 ## TODO
 
+- Add details page
 - Move the Constants to ConfigurationProvider
 - Add Region and language to the Configuration
 - URL-string => Request-class (with decoration, API-request is basic)

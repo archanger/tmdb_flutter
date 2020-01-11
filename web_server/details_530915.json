@@ -1,0 +1,91 @@
+{
+  "adult": false,
+  "backdrop_path": "/tUWivz05fcY14K6RzicRm7IHkUD.jpg",
+  "belongs_to_collection": null,
+  "budget": 100000000,
+  "genres": [
+    {
+      "id": 10752,
+      "name": "военный"
+    },
+    {
+      "id": 18,
+      "name": "драма"
+    },
+    {
+      "id": 36,
+      "name": "история"
+    }
+  ],
+  "homepage": "https://www.1917.movie/",
+  "id": 530915,
+  "imdb_id": "tt8579674",
+  "original_language": "en",
+  "original_title": "1917",
+  "overview": "1917 год, разгар Первой мировой войны. Двум юным молодым солдатам поручают смертельно опасную миссию. Они должны пересечь вражескую территорию и доставить секретное сообщение, которое предотвратит неминуемую гибель сотен солдат… Смогут ли они выиграть гонку со временем?",
+  "popularity": 103.736,
+  "poster_path": "/6o1ssGVf854omPtMyi8EpfT39kv.jpg",
+  "production_companies": [
+    {
+      "id": 1522,
+      "logo_path": null,
+      "name": "Neal Street Productions",
+      "origin_country": "GB"
+    },
+    {
+      "id": 7,
+      "logo_path": "/vru2SssLX3FPhnKZGtYw00pVIS9.png",
+      "name": "DreamWorks Pictures",
+      "origin_country": "US"
+    },
+    {
+      "id": 114732,
+      "logo_path": "/tNCbisMxO5mX2X2bOQxHHQZVYnT.png",
+      "name": "New Republic Pictures",
+      "origin_country": "US"
+    },
+    {
+      "id": 121685,
+      "logo_path": "/bAO6cpKP9qoqHoDn4oUjWjZ5auq.png",
+      "name": "Amblin Partners",
+      "origin_country": "US"
+    },
+    {
+      "id": 7294,
+      "logo_path": "/kK4PRgceWp9KNrycD8xx8seWxYU.png",
+      "name": "Reliance Entertainment",
+      "origin_country": "IN"
+    },
+    {
+      "id": 33,
+      "logo_path": "/8lvHyhjr8oUKOOy2dKXoALWKdp0.png",
+      "name": "Universal Pictures",
+      "origin_country": "US"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "GB",
+      "name": "United Kingdom"
+    },
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2019-12-10",
+  "revenue": 0,
+  "runtime": 119,
+  "spoken_languages": [
+    {
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "Время — наш главный враг",
+  "title": "1917",
+  "video": false,
+  "vote_average": 7.8,
+  "vote_count": 115
+}

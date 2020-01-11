@@ -21,20 +21,27 @@ class FakeServer {
       print('FAKE SERVER:: Request Path: ' + request.uri.path);
       print('FAKE SERVER:: Query Params: ' + request.uri.queryParameters.toString());
       try {
-        switch (request.uri.path) {
-          case '/discover/movie':
-            discoverMovies(request);
-            break;
-          case '/configuration':
-            discoverConfig(request);
-            break;
-          default:
-            notFound(request);
+        final path = request.uri.path;
+        if (path == '/discover/movie') {
+          discoverMovies(request);
+        } else if (path == '/configuration') {
+          discoverConfig(request);
+        } else if (path.contains('/details/')) {
+          discoverDetails(request);
+        } else {
+          notFound(request);
         }
       } catch (error) {
         internalError(error, request);
       }
     }
+  }
+
+  Future<dynamic> discoverDetails(HttpRequest request) async {
+    var json = File(Directory.current.path + '/web_server/details_530915.json').readAsStringSync();
+    request.response
+      ..write(json)
+      ..close();
   }
 }
 
