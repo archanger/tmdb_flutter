@@ -1,6 +1,7 @@
 import 'package:flutter_driver/flutter_driver.dart';
 
 import 'base_page.dart';
+import 'details_page.dart';
 
 class HomeScreen extends BasePage {
   final _listView = find.byValueKey('movies_list');
@@ -23,5 +24,10 @@ class HomeScreen extends BasePage {
     for (var item in _scrollableItems) {
       await driver.scrollUntilVisible(_listView, item, dyScroll: -400);
     }
+  }
+
+  Future<DetailsPage> openDetails() async {
+    await driver.tap(find.text('Закатать в асфальт'));
+    return DetailsPage(driver);
   }
 }

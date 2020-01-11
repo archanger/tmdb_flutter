@@ -35,7 +35,7 @@ class MoviesListBloc {
               .map((m) => Movie(
                     m.id,
                     m.title,
-                    _posterUrl() + m.posterPath,
+                    m.posterPath != null ? _posterUrl() + m.posterPath : null,
                     m.voteAverage,
                     m.releaseDate,
                   ))
