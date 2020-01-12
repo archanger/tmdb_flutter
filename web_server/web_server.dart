@@ -26,7 +26,7 @@ class FakeServer {
           discoverMovies(request);
         } else if (path == '/configuration') {
           discoverConfig(request);
-        } else if (path.contains('/details/')) {
+        } else if (path.startsWith('/movie/')) {
           discoverDetails(request);
         } else {
           notFound(request);

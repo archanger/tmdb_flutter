@@ -66,12 +66,18 @@ class _MoviesListPageState extends State<MoviesListPage> {
   int _itemsCount(MoviesListState state) => state.movies.length + (state.hasAnotherBatch ? 1 : 0);
 
   Widget _listItem(MoviesListState state, int index) {
+    var movieId = state.movies[index].id;
     return index >= state.movies.length
         ? _loading()
-        : Padding(
-            key: Key('${state.movies[index].id}'),
-            padding: EdgeInsets.only(top: index == 0 ? 20 : 0),
-            child: MovieListItem(movie: state.movies[index]),
+        : GestureDetector(
+            child: Padding(
+              key: Key('$movieId'),
+              padding: EdgeInsets.only(top: index == 0 ? 20 : 0),
+              child: MovieListItem(movie: state.movies[index]),
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed('/details', arguments: movieId);
+            },
           );
   }
 

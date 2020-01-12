@@ -23,6 +23,7 @@ class MoviesListBloc {
   }
 
   Stream<MoviesListState> get allMovies => _moviesFetcher.stream;
+
   void fetchNextPage() async {
     if (_isFetching) return;
     _isFetching = true;

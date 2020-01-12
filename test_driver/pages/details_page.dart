@@ -12,7 +12,7 @@ class DetailsPage extends BasePage {
 
   checkContent() async {
     await driver.waitFor(_posterSmall);
-    expect(driver.getText(_title), '1917');
-    expect(driver.getText(_storyline), contains('разгар Первой мировой войны'));
+    expect(await driver.getText(_title), '1917');
+    expect(await driver.getText(_storyline), contains('разгар Первой мировой войны'));
   }
 }
