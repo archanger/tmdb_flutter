@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
+import 'package:movies/helpers/bloc.dart';
 import 'package:movies/models/movie_detail.dart';
 import 'package:movies/movies_list/movies_service.dart';
 import 'package:rxdart/subjects.dart';
 
-class MovieDetailsBloc {
+class MovieDetailsBloc implements Bloc {
   final MoviesService _service;
 
   final _fetcher = ReplaySubject<MovieDetail>();
@@ -22,7 +23,8 @@ class MovieDetailsBloc {
     _fetcher.sink.add(details);
   }
 
-  dispose() {
+  @override
+  void dispose() {
     _fetcher.close();
   }
 }

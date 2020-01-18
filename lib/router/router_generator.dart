@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/helpers/bloc_provider.dart';
 import 'package:movies/movie_details/movie_details_bloc.dart';
 import 'package:movies/movie_details/movie_details_page.dart';
 import 'package:movies/movies_list/movies_list_bloc.dart';
@@ -34,6 +35,8 @@ Route<dynamic> routerGenerator(RouteSettings settings) {
       }
       break;
     default:
-      return MaterialPageRoute(builder: (context) => SplashPage());
+      return MaterialPageRoute(
+        builder: (context) => SplashFactory().createPage(),
+      );
   }
 }

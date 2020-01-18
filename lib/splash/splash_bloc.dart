@@ -1,8 +1,9 @@
+import 'package:movies/helpers/bloc.dart';
 import 'package:movies/providers/configuration_provider.dart';
 import 'package:movies/splash/configuration_service.dart';
 import 'package:rxdart/rxdart.dart';
 
-class SplashBloc {
+class SplashBloc implements Bloc {
   final PublishSubject<void> _subject = PublishSubject();
   final ConfigurationService _service;
   final ConfigurationProvider _configProvider;
@@ -15,4 +16,9 @@ class SplashBloc {
     }).catchError((e) => _subject.addError(e));
   }
   Stream<void> get completed => _subject.stream;
+
+  @override
+  void dispose() {
+    _subject.close();
+  }
 }
