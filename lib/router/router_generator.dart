@@ -1,42 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:movies/helpers/bloc_provider.dart';
-import 'package:movies/movie_details/movie_details_bloc.dart';
 import 'package:movies/movie_details/movie_details_page.dart';
-import 'package:movies/movies_list/movies_list_bloc.dart';
 import 'package:movies/movies_list/movies_list_page.dart';
-import 'package:movies/movies_list/movies_service.dart';
-import 'package:movies/providers/configuration_provider.dart';
 import 'package:movies/splash/splash_page.dart';
 
 Route<dynamic> routerGenerator(RouteSettings settings) {
   switch (settings.name) {
     case '/home':
-      return MaterialPageRoute(
-        builder: (context) => MoviesListPage(
-          bloc: MoviesListBloc(
-            service: MoviesService(),
-            configProvider: globalConfigProvider,
-          ),
-        ),
-      );
+      return _home(settings);
+      break;
     case '/details':
-      try {
-        var movieId = settings.arguments as int;
-        return MaterialPageRoute(
-          builder: (context) => MovieDetailsPage(
-            bloc: MovieDetailsBloc(
-              id: movieId,
-              service: MoviesService(),
-            ),
-          ),
-        );
-      } catch (e) {
-        print(e);
-      }
+      return _details(settings);
       break;
     default:
       return MaterialPageRoute(
         builder: (context) => SplashFactory().createPage(),
       );
+  }
+}
+
+Route<dynamic> _home(RouteSettings settings) {
+  return MaterialPageRoute(
+    builder: (context) => MoviesListFactory().listPage(),
+  );
+}
+
+Route<dynamic> _details(RouteSettings settings) {
+  try {
+    var movieId = settings.arguments as int;
+    return MaterialPageRoute(
+      builder: (context) => MovieDetailsPageFactory().movieDetailsPage(movieId: movieId),
+    );
+  } catch (e) {
+    // TODO: add error page
+    print(e);
   }
 }

@@ -1,36 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:movies/helpers/bloc_provider.dart';
 import 'package:movies/models/movie_detail.dart';
 import 'package:movies/movie_details/movie_details_bloc.dart';
+import 'package:movies/movies_list/movies_service.dart';
 
-class MovieDetailsPage extends StatefulWidget {
-  final MovieDetailsBloc _bloc;
-
-  const MovieDetailsPage({Key key, MovieDetailsBloc bloc})
-      : _bloc = bloc,
-        super(key: key);
-
-  @override
-  _MovieDetailsPageState createState() => _MovieDetailsPageState(_bloc);
-}
-
-class _MovieDetailsPageState extends State<MovieDetailsPage> {
-  final MovieDetailsBloc _bloc;
-
-  _MovieDetailsPageState(this._bloc);
-
-  @override
-  void dispose() {
-    _bloc.dispose();
-    super.dispose();
-  }
-
+class MovieDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<MovieDetailsBloc>(context);
     return Scaffold(
       body: SafeArea(
         child: StreamBuilder<MovieDetail>(
-          stream: _bloc.details,
+          stream: bloc.details,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Center(
@@ -112,6 +94,18 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
         story,
         key: Key('story_line'),
       ),
+    );
+  }
+}
+
+class MovieDetailsPageFactory {
+  Widget movieDetailsPage({@required int movieId}) {
+    return BlocProvider(
+      bloc: MovieDetailsBloc(
+        id: movieId,
+        service: MoviesService(),
+      ),
+      child: MovieDetailsPage(),
     );
   }
 }

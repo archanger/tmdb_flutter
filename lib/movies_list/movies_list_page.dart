@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:movies/helpers/bloc_provider.dart';
 import 'package:movies/movies_list/movie_list_item.dart';
 import 'package:movies/movies_list/movies_list_bloc.dart';
 import 'package:movies/movies_list/movies_list_state.dart';
+import 'package:movies/providers/configuration_provider.dart';
+
+import 'movies_service.dart';
 
 class MoviesListPage extends StatefulWidget {
-  final MoviesListBloc _bloc;
-
-  const MoviesListPage({
-    Key key,
-    @required MoviesListBloc bloc,
-  })  : _bloc = bloc,
-        super(key: key);
-
   @override
   _MoviesListPageState createState() => _MoviesListPageState();
 }
@@ -53,7 +49,7 @@ class _MoviesListPageState extends State<MoviesListPage> {
 
   @override
   void dispose() {
-    bloc.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -66,22 +62,24 @@ class _MoviesListPageState extends State<MoviesListPage> {
   int _itemsCount(MoviesListState state) => state.movies.length + (state.hasAnotherBatch ? 1 : 0);
 
   Widget _listItem(MoviesListState state, int index) {
+    if (index >= state.movies.length) {
+      return _loading();
+    }
+
     var movieId = state.movies[index].id;
-    return index >= state.movies.length
-        ? _loading()
-        : GestureDetector(
-            child: Padding(
-              key: Key('$movieId'),
-              padding: EdgeInsets.only(top: index == 0 ? 20 : 0),
-              child: MovieListItem(movie: state.movies[index]),
-            ),
-            onTap: () {
-              Navigator.of(context).pushNamed('/details', arguments: movieId);
-            },
-          );
+    return GestureDetector(
+      child: Padding(
+        key: Key('$movieId'),
+        padding: EdgeInsets.only(top: index == 0 ? 20 : 0),
+        child: MovieListItem(movie: state.movies[index]),
+      ),
+      onTap: () {
+        Navigator.of(context).pushNamed('/details', arguments: movieId);
+      },
+    );
   }
 
-  MoviesListBloc get bloc => widget._bloc;
+  MoviesListBloc get bloc => BlocProvider.of<MoviesListBloc>(context);
 
   bool _handleScrollNotification(ScrollNotification notification) {
     final triggerSize = _scrollController.position.maxScrollExtent * 0.9;
@@ -90,5 +88,17 @@ class _MoviesListPageState extends State<MoviesListPage> {
     }
 
     return false;
+  }
+}
+
+class MoviesListFactory {
+  Widget listPage() {
+    return BlocProvider(
+      bloc: MoviesListBloc(
+        service: MoviesService(),
+        configProvider: globalConfigProvider,
+      ),
+      child: MoviesListPage(),
+    );
   }
 }

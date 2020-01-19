@@ -2,7 +2,8 @@
   "page": 2,
   "total_results": 24,
   "total_pages": 2,
-  "results": [{
+  "results": [
+    {
       "vote_count": 0,
       "id": 577037,
       "video": false,
