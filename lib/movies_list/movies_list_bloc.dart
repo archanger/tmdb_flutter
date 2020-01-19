@@ -1,15 +1,16 @@
+import 'dart:async';
+
 import 'package:meta/meta.dart';
 import 'package:movies/helpers/bloc.dart';
 import 'package:movies/models/movie.dart';
 import 'package:movies/movies_list/movies_list_state.dart';
 import 'package:movies/movies_list/movies_service.dart';
 import 'package:movies/providers/configuration_provider.dart';
-import 'package:rxdart/rxdart.dart';
 
 class MoviesListBloc implements Bloc {
   final MoviesService _service;
   final ConfigurationProvider _configProvider;
-  final _moviesFetcher = BehaviorSubject<MoviesListState>.seeded(MoviesListState.empty());
+  final _moviesFetcher = StreamController<MoviesListState>();
   var _currentPage = 0;
   var _currentState = MoviesListState.empty();
   var _isFetching = false;

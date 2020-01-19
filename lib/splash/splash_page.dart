@@ -9,7 +9,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<SplashBloc>(context);
-    bloc.completed.listen((_) => Navigator.of(context).pushReplacementNamed('/home'));
+    bloc.completed.then((_) => Navigator.of(context).pushReplacementNamed('/home'));
     return Material(
       key: Key('splash_page'),
       child: Center(

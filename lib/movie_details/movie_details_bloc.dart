@@ -1,13 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:movies/helpers/bloc.dart';
 import 'package:movies/models/movie_detail.dart';
 import 'package:movies/movies_list/movies_service.dart';
-import 'package:rxdart/subjects.dart';
 
 class MovieDetailsBloc implements Bloc {
   final MoviesService _service;
 
-  final _fetcher = ReplaySubject<MovieDetail>();
+  final _fetcher = StreamController<MovieDetail>();
 
   MovieDetailsBloc({
     @required int id,
