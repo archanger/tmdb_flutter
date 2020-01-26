@@ -31,7 +31,7 @@ class MovieListItemContent extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              'raiting: ${_movie.voteAverage}',
+              'rating: ${_movie.voteAverage}',
               style: Theme.of(context).textTheme.body2,
             ),
             SizedBox(height: 8),

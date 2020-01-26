@@ -18,11 +18,11 @@ void main() {
       final subject = MoviesListBloc(service: mockService, configProvider: configProvider);
 
       expect(
-          subject.allMovies,
-          emitsInOrder([
-            MoviesListState.empty(),
-            _expectedState(),
-          ]));
+        subject.allMovies,
+        emitsInOrder([
+          _expectedState(),
+        ]),
+      );
     });
   });
 }

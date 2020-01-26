@@ -22,7 +22,7 @@ void main() {
 
       logInvocations([configMock]);
       final subject = SplashBloc(mockService, configMock);
-      await expectLater(subject.completed, emitsAnyOf([null, emitsDone]));
+      await subject.completed;
       verify(configMock.update(config)).called(1);
     });
   });
