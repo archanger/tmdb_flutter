@@ -7,16 +7,11 @@ class Genre extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(8)),
-        color: Color(0xFFD8EDF5),
-      ),
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.caption,
-      ),
+    return Chip(
+      // labelPadding: EdgeInsets.all(0),
+      // padding: EdgeInsets.all(0),
+      backgroundColor: Color(0xFFD8EDF5),
+      label: Text(text, style: Theme.of(context).textTheme.caption),
     );
   }
 }

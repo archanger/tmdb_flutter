@@ -14,18 +14,16 @@ class MovieDetailsPage extends StatelessWidget {
     bloc.adjustTo(size: MediaQuery.of(context).size.width.toInt());
 
     return Scaffold(
-      body: SafeArea(
-        child: StreamBuilder<MovieDetail>(
-          stream: bloc.details,
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            return _page(context, snapshot.data);
-          },
-        ),
+      body: StreamBuilder<MovieDetail>(
+        stream: bloc.details,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return _page(context, snapshot.data);
+        },
       ),
     );
   }
@@ -33,7 +31,7 @@ class MovieDetailsPage extends StatelessWidget {
   Widget _page(BuildContext context, MovieDetail data) {
     return Stack(
       children: [
-        _poster(data.poster),
+        _poster(data.backdrop),
         _content(context, data),
         // _backButton(context),
       ],
@@ -45,7 +43,10 @@ class MovieDetailsPage extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _backButton(context),
+        SafeArea(
+          bottom: false,
+          child: _backButton(context),
+        ),
         _scrollableContent(details: details),
       ],
     );
@@ -65,15 +66,11 @@ class MovieDetailsPage extends StatelessWidget {
 
   Widget _scrollableContent({MovieDetail details}) {
     return Expanded(
-      child: LayoutBuilder(builder: (BuildContext context, BoxConstraints viewportConstraints) {
-        return SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
-          padding: EdgeInsets.only(top: 220),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: viewportConstraints.maxHeight - 220,
-            ),
-            child: Material(
+      child: DraggableScrollableSheet(
+          initialChildSize: 0.7,
+          minChildSize: 0.7,
+          builder: (BuildContext context, ScrollController scrollController) {
+            return Material(
               elevation: 16,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
@@ -90,18 +87,27 @@ class MovieDetailsPage extends StatelessWidget {
                 padding: EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: <Widget>[
                     _genres(context, details.genres),
                     _title(context, details.title),
-                    _storyLine(context, details.storyLine),
-                    // Expanded(child: Container()),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        controller: scrollController,
+                        physics: ClampingScrollPhysics(),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _storyLine(context, details.storyLine),
+                            // Expanded(child: Container()),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
-            ),
-          ),
-        );
-      }),
+            );
+          }),
     );
   }
 
@@ -117,49 +123,49 @@ class MovieDetailsPage extends StatelessWidget {
   }
 
   Widget _storyLine(BuildContext context, String story) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Story',
-          style: Theme.of(context).textTheme.subhead,
-        ),
-        SizedBox(height: 16),
-        Text(
-          story,
-          key: Key('story_line'),
-          style: Theme.of(context).textTheme.body1,
-        ),
-      ],
+    return SafeArea(
+      top: false,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Story',
+            style: Theme.of(context).textTheme.subhead,
+          ),
+          SizedBox(height: 16),
+          Text(
+            story,
+            key: Key('story_line'),
+            style: Theme.of(context).textTheme.body1,
+          ),
+        ],
+      ),
     );
   }
 
   Widget _poster(String url) {
-    return Container(
-      height: 350,
-      foregroundDecoration: BoxDecoration(
-        color: Colors.black26,
-      ),
-      decoration: BoxDecoration(
-          image: DecorationImage(
-        image: NetworkImage(url),
-        fit: BoxFit.fitWidth,
-      )),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          height: constraints.maxHeight * 0.5,
+          foregroundDecoration: BoxDecoration(
+            color: Colors.black26,
+          ),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+            image: NetworkImage(url),
+            fit: BoxFit.fitWidth,
+          )),
+        );
+      },
     );
   }
 
   Widget _genres(BuildContext context, List<String> genres) {
-    return Row(
-      children: genres
-          .map((g) => Genre(
-                text: g,
-              ))
-          .expand((item) sync* {
-            yield const SizedBox(width: 8);
-            yield item;
-          })
-          .skip(1)
-          .toList(),
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: genres.map((g) => Genre(text: g)).toList(),
     );
   }
 }

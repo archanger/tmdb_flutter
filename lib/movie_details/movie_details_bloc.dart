@@ -32,7 +32,7 @@ class MovieDetailsBloc implements Bloc {
       details.id,
       details.title,
       details.storyLine,
-      _posterUrl() + details.poster,
+      _posterUrl() + details.backdrop,
       details.genres,
     ));
   }

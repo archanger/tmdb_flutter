@@ -89,7 +89,7 @@ class MovieDetailsDeserializer {
       body['id'],
       body['title'],
       body['overview'],
-      body['poster_path'],
+      body['backdrop_path'],
       (body['genres'] as List<dynamic>).map((genre) => genre['name'] as String).toList(),
     );
   }
