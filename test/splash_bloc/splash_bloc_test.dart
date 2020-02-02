@@ -16,7 +16,7 @@ void main() {
         ..imageConfiguration = (ImageConfigurationBuilderAdditions.empty())
         ..changeKeys = ListBuilder([]));
 
-      when(mockService.fetchConfig()).thenAnswer(
+      when(mockService.fetchImageConfig()).thenAnswer(
         (v) => Future.value(config),
       );
 

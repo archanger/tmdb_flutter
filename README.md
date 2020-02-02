@@ -13,5 +13,4 @@ TMDB Client
 - Clarify Theming
 - How to parameterize width of an image? still the question... should be calculated once on the page
 - localization
-- nicer details UX (try DraggableScrollableSheet)
 - ...

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movies/router/router_generator.dart';
 import 'package:movies/splash/splash_page.dart';
 import 'package:movies/tools/constants.dart';
@@ -18,6 +19,14 @@ class MyApp extends StatelessWidget {
       theme: tmdbTheme(context),
       onGenerateRoute: routerGenerator,
       home: SplashFactory().createPage(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'),
+        const Locale('de', 'DE'),
+        const Locale('ru', 'RU'),
+      ],
     );
   }
 }

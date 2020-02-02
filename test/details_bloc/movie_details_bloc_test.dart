@@ -9,7 +9,7 @@ void main() {
   group('MovieDetailsBloc', () {
     test('return details for a movie', () {
       final configMock = ConfigurationProviderMock();
-      when(configMock.posterBaseUrlFitting(0)).thenReturn('expected');
+      when(configMock.backdropUrlFitting(0)).thenReturn('expected');
 
       final serviceMock = MovieDetailsServiceMock();
       when(serviceMock.fetchDetails(0)).thenAnswer((_) {

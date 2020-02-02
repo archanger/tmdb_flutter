@@ -9,7 +9,7 @@ import 'package:movies/providers/configuration_provider.dart';
 class MovieDetailsBloc implements Bloc {
   final MoviesService _service;
   final ConfigurationProvider _configProvider;
-  var _adjustedPosterSize = 0;
+  var _adjustedBackdropSize = 0;
 
   final _fetcher = StreamController<MovieDetail>();
 
@@ -24,7 +24,7 @@ class MovieDetailsBloc implements Bloc {
 
   Stream<MovieDetail> get details => _fetcher.stream;
 
-  void adjustTo({int size}) => _adjustedPosterSize = size;
+  void adjustTo({int size}) => _adjustedBackdropSize = size;
 
   _fetch(int id) async {
     var details = await _service.fetchDetails(id);
@@ -37,7 +37,7 @@ class MovieDetailsBloc implements Bloc {
     ));
   }
 
-  String _posterUrl() => _configProvider.posterBaseUrlFitting(_adjustedPosterSize);
+  String _posterUrl() => _configProvider.backdropUrlFitting(_adjustedBackdropSize);
 
   @override
   void dispose() {

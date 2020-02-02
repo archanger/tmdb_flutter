@@ -5,6 +5,7 @@ import 'package:movies/helpers/base_query.dart';
 import 'package:movies/models/movie.dart';
 import 'package:movies/models/movie_detail.dart';
 import 'package:movies/models/movies_result.dart';
+import 'package:movies/providers/configuration_provider.dart';
 import 'package:movies/tools/base_url_provider_mixin.dart';
 import 'package:movies/tools/date_time_formatters.dart';
 
@@ -27,13 +28,28 @@ class UpcomingMoviesQuery extends BaseQuery {
 
 class DetailsQuery extends BaseQuery {
   final int id;
+  final String region;
+  final String language;
 
-  DetailsQuery(this.id);
+  DetailsQuery(
+    this.id, {
+    this.region = 'RU',
+    this.language = 'ru',
+  });
+
+  @override
+  String toString() {
+    return super.toString() + '&region=$region&language=$language';
+  }
 }
 
 class MoviesService with BaseURLProviderMixin {
   Future<MoviesResult> fetchUpcomingMovies({int page = 1}) async {
-    final query = UpcomingMoviesQuery(_gteDateString, page);
+    final query = UpcomingMoviesQuery(
+      _gteDateString,
+      page,
+      language: globalConfigProvider.currentLanguage.iso,
+    );
     final response = await http.get(_url(page).replace(query: query.toString()));
     if (response.statusCode == 200) {
       final jsonBody = json.decode(response.body);
@@ -44,7 +60,10 @@ class MoviesService with BaseURLProviderMixin {
   }
 
   Future<MovieDetail> fetchDetails(int id) async {
-    final query = DetailsQuery(id);
+    final query = DetailsQuery(
+      id,
+      language: globalConfigProvider.currentLanguage.iso,
+    );
     final response = await http.get(Uri.parse(baseURL + '/movie/$id').replace(query: query.toString()));
     if (response.statusCode == 200) {
       final jsonBody = json.decode(response.body);

@@ -1,17 +1,31 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:movies/models/configuration.dart';
 import 'package:movies/models/image_configuration.dart';
+import 'package:movies/splash/configuration_service.dart';
 
 final globalConfigProvider = ConfigurationProvider._internal();
 
 class ConfigurationProvider {
-  String get apiKey => '27f041b87264c855c1f8d198c9d73cfe';
-
   update(Configuration configuration) {
     _config = configuration;
   }
 
+  updateSupportedLanguages(List<MoviesLanguage> languages) {
+    _supportedLanguages = languages;
+    updateCurrentLocale(_locale);
+  }
+
+  void updateCurrentLocale(String locale) {
+    _locale = locale;
+    _currentLanguage = _supportedLanguages.firstWhere(
+      (lng) => lng.iso == locale,
+      orElse: () => MoviesLanguage('en', 'English', 'English'),
+    );
+  }
+
   Configuration get configuration => _config;
+  List<MoviesLanguage> get supportedLanguages => _supportedLanguages;
+  MoviesLanguage get currentLanguage => _currentLanguage;
 
   Configuration _config = Configuration(
     (b) => b
@@ -19,16 +33,22 @@ class ConfigurationProvider {
       ..changeKeys = ListBuilder([]),
   );
 
-  String posterBaseUrlFitting(int size) {
-    final sizes = _config.imageConfiguration.posterSizes
-        .where((ps) => ps != 'original')
-        .map((ps) => ps.substring(1))
-        .map(int.parse)
-        .toList();
-    var pixelSize = size * 2;
+  List<MoviesLanguage> _supportedLanguages = [];
+  MoviesLanguage _currentLanguage;
+  String _locale = 'en';
 
-    final nearestSize = _findNearest(sizes, pixelSize);
-    return _config.imageConfiguration.baseUrl + 'w$nearestSize';
+  String posterBaseUrlFitting(int size) {
+    return _config.imageConfiguration.baseUrl + _findImageSize(size, _config.imageConfiguration.posterSizes.asList());
+  }
+
+  String backdropUrlFitting(int size) {
+    return _config.imageConfiguration.baseUrl + _findImageSize(size, _config.imageConfiguration.backdropSizes.asList());
+  }
+
+  String _findImageSize(int size, List<String> imageSizes) {
+    final pixelSize = size * 2;
+    final sizes = imageSizes.where((ps) => ps != 'original').map((ps) => ps.substring(1)).map(int.parse).toList();
+    return 'w${_findNearest(sizes, pixelSize)}';
   }
 
   int _findNearest(List<int> list, int value) {
