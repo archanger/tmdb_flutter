@@ -39,5 +39,7 @@ MovieDetail _fakeMovie() {
     'storyLine',
     'url',
     ['one', 'two'],
+    100,
+    [],
   );
 }

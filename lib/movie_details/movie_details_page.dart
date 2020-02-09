@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies/helpers/bloc_provider.dart';
+import 'package:movies/models/movie_credit.dart';
 import 'package:movies/models/movie_detail.dart';
-import 'package:movies/movie_details/genre_widget.dart';
 import 'package:movies/movie_details/movie_details_bloc.dart';
 import 'package:movies/movies_list/movies_service.dart';
 import 'package:movies/providers/configuration_provider.dart';
@@ -97,6 +97,8 @@ class MovieDetailsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _storyLine(context, details.storyLine),
+                          SizedBox(height: 24),
+                          _cast(context, details.credits),
                           // Expanded(child: Container()),
                         ],
                       ),
@@ -182,6 +184,63 @@ class MovieDetailsPage extends StatelessWidget {
     }
     result += "${duration.inMinutes.remainder(60)} min";
     return result;
+  }
+
+  Widget _cast(BuildContext context, List<MovieCredit> credits) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Cast',
+          style: Theme.of(context).textTheme.body2,
+        ),
+        SizedBox(height: 12),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 24,
+            children: credits.map((c) => Credit(credit: c)).toList(),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Credit extends StatelessWidget {
+  final MovieCredit credit;
+
+  const Credit({Key key, this.credit}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 80,
+      child: Column(
+        children: [
+          Text(
+            credit.character,
+            textAlign: TextAlign.center,
+          ),
+          if (credit.profile != null) ...[
+            SizedBox(
+              height: 8,
+            ),
+            Container(
+              height: 80,
+              width: 72,
+              child: Image.network(credit.profile),
+            ),
+          ],
+          SizedBox(height: 8),
+          Text(
+            credit.name,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
   }
 }
 

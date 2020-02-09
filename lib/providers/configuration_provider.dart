@@ -45,6 +45,10 @@ class ConfigurationProvider {
     return _config.imageConfiguration.baseUrl + _findImageSize(size, _config.imageConfiguration.backdropSizes.asList());
   }
 
+  String profileBaseUrl() {
+    return _config.imageConfiguration.baseUrl + _findImageSize(0, _config.imageConfiguration.posterSizes.asList());
+  }
+
   String _findImageSize(int size, List<String> imageSizes) {
     final pixelSize = size * 2;
     final sizes = imageSizes.where((ps) => ps != 'original').map((ps) => ps.substring(1)).map(int.parse).toList();

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:movies/helpers/bloc.dart';
+import 'package:movies/models/movie_credit.dart';
 import 'package:movies/models/movie_detail.dart';
 import 'package:movies/movies_list/movies_service.dart';
 import 'package:movies/providers/configuration_provider.dart';
@@ -35,6 +36,17 @@ class MovieDetailsBloc implements Bloc {
       _posterUrl() + details.backdrop,
       details.genres,
       details.runtime,
+      details.credits
+          .map(
+            (c) => MovieCredit(
+              c.id,
+              c.name,
+              c.profile != null ? _configProvider.profileBaseUrl() + c.profile : c.profile,
+              c.character,
+            ),
+          )
+          .take(10)
+          .toList(),
     ));
   }
 

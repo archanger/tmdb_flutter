@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movies/helpers/base_query.dart';
 import 'package:movies/models/movie.dart';
+import 'package:movies/models/movie_credit.dart';
 import 'package:movies/models/movie_detail.dart';
 import 'package:movies/models/movies_result.dart';
 import 'package:movies/providers/configuration_provider.dart';
@@ -40,7 +41,7 @@ class DetailsQuery extends BaseQuery {
 
   @override
   String toString() {
-    return super.toString() + '&region=$region&language=$language';
+    return super.toString() + '&region=$region&language=$language&append_to_response=credits';
   }
 }
 
@@ -106,12 +107,25 @@ class MovieParser {
 class MovieDetailsDeserializer {
   MovieDetail parse(Map<String, dynamic> body) {
     return MovieDetail(
+        body['id'],
+        body['title'],
+        body['overview'],
+        body['backdrop_path'],
+        (body['genres'] as List<dynamic>).map((genre) => genre['name'] as String).toList(),
+        body['runtime'],
+        (body['credits']['cast'] as List).map((body) => MovieCreditDeserializer().parse(body)).toList()
+        // ()
+        );
+  }
+}
+
+class MovieCreditDeserializer {
+  MovieCredit parse(Map<String, dynamic> body) {
+    return MovieCredit(
       body['id'],
-      body['title'],
-      body['overview'],
-      body['backdrop_path'],
-      (body['genres'] as List<dynamic>).map((genre) => genre['name'] as String).toList(),
-      body['runtime'],
+      body['name'],
+      body['profile_path'],
+      body['character'],
     );
   }
 }
