@@ -39,6 +39,7 @@ ThemeData tmdbTheme(BuildContext context) {
     scaffoldBackgroundColor: Color(0xff19272E),
     textTheme: Theme.of(context).textTheme.apply(
           bodyColor: Colors.white,
+          displayColor: Colors.white,
         ),
   );
 }

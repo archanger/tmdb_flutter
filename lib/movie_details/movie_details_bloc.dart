@@ -34,6 +34,7 @@ class MovieDetailsBloc implements Bloc {
       details.storyLine,
       _posterUrl() + details.backdrop,
       details.genres,
+      details.runtime,
     ));
   }
 

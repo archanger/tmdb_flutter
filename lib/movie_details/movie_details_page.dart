@@ -31,9 +31,8 @@ class MovieDetailsPage extends StatelessWidget {
   Widget _page(BuildContext context, MovieDetail data) {
     return Stack(
       children: [
-        _poster(data.backdrop),
+        _backdrop(data.backdrop),
         _content(context, data),
-        // _backButton(context),
       ],
     );
   }
@@ -67,44 +66,43 @@ class MovieDetailsPage extends StatelessWidget {
   Widget _scrollableContent({MovieDetail details}) {
     return Expanded(
       child: DraggableScrollableSheet(
-          initialChildSize: 0.7,
-          minChildSize: 0.7,
+          initialChildSize: 0.8,
+          minChildSize: 0.8,
           builder: (BuildContext context, ScrollController scrollController) {
-            return Material(
-              elevation: 16,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                  color: Theme.of(context).scaffoldBackgroundColor,
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    _genres(context, details.genres),
-                    _title(context, details.title),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        controller: scrollController,
-                        physics: ClampingScrollPhysics(),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _storyLine(context, details.storyLine),
-                            // Expanded(child: Container()),
-                          ],
-                        ),
+                color: Theme.of(context).scaffoldBackgroundColor,
+              ),
+              padding: EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _title(context, details.title),
+                  SizedBox(height: 12),
+                  _genres(context, details.genres),
+                  if (details.runtime != 0) ...[
+                    SizedBox(height: 12),
+                    _runtime(context, details.runtime),
+                  ],
+                  SizedBox(height: 16),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      controller: scrollController,
+                      physics: ClampingScrollPhysics(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _storyLine(context, details.storyLine),
+                          // Expanded(child: Container()),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             );
           }),
@@ -112,13 +110,10 @@ class MovieDetailsPage extends StatelessWidget {
   }
 
   Widget _title(BuildContext context, String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
-      child: Text(
-        title,
-        key: Key('title'),
-        style: Theme.of(context).textTheme.headline,
-      ),
+    return Text(
+      title,
+      key: Key('title'),
+      style: Theme.of(context).textTheme.display1,
     );
   }
 
@@ -130,34 +125,31 @@ class MovieDetailsPage extends StatelessWidget {
         children: <Widget>[
           Text(
             'Story',
-            style: Theme.of(context).textTheme.subhead,
+            style: Theme.of(context).textTheme.body2,
           ),
           SizedBox(height: 16),
           Text(
             story,
             key: Key('story_line'),
-            style: Theme.of(context).textTheme.body1,
+            style: Theme.of(context).textTheme.title,
           ),
         ],
       ),
     );
   }
 
-  Widget _poster(String url) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Container(
-          height: constraints.maxHeight * 0.5,
-          foregroundDecoration: BoxDecoration(
-            color: Colors.black26,
-          ),
-          decoration: BoxDecoration(
-              image: DecorationImage(
-            image: NetworkImage(url),
-            fit: BoxFit.fitWidth,
-          )),
-        );
-      },
+  Widget _backdrop(String url) {
+    return Container(
+      key: Key('backdrop'),
+      height: 300,
+      foregroundDecoration: BoxDecoration(
+        color: Colors.black26,
+      ),
+      decoration: BoxDecoration(
+          image: DecorationImage(
+        image: NetworkImage(url),
+        fit: BoxFit.cover,
+      )),
     );
   }
 
@@ -165,8 +157,31 @@ class MovieDetailsPage extends StatelessWidget {
     return Wrap(
       spacing: 8,
       runSpacing: 8,
-      children: genres.map((g) => Genre(text: g)).toList(),
+      children: genres.map((g) {
+        return Text(
+          g,
+          style: Theme.of(context).textTheme.body2,
+        );
+      }).toList(),
     );
+  }
+
+  Widget _runtime(BuildContext context, int runtime) {
+    return Text(
+      'Run Time: ${_format(runtime)}',
+      key: Key('runtime'),
+      style: Theme.of(context).textTheme.caption,
+    );
+  }
+
+  String _format(int runtime) {
+    var duration = Duration(minutes: runtime);
+    var result = "";
+    if (duration.inHours != 0) {
+      result += "${duration.inHours} h ";
+    }
+    result += "${duration.inMinutes.remainder(60)} min";
+    return result;
   }
 }
 

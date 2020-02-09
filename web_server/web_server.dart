@@ -24,6 +24,8 @@ class FakeServer {
         final path = request.uri.path;
         if (path == '/discover/movie') {
           discoverMovies(request);
+        } else if (path.startsWith('/configuration/languages')) {
+          discoverLanguages(request);
         } else if (path == '/configuration') {
           discoverConfig(request);
         } else if (path.startsWith('/movie/')) {
@@ -59,6 +61,13 @@ Future<dynamic> discoverMovies(HttpRequest request) async {
 
 Future<dynamic> discoverConfig(HttpRequest request) async {
   var json = File(Directory.current.path + '/web_server/configuration.json').readAsStringSync();
+  request.response
+    ..write(json)
+    ..close();
+}
+
+Future<dynamic> discoverLanguages(HttpRequest request) async {
+  var json = File(Directory.current.path + '/web_server/languages.json').readAsStringSync();
   request.response
     ..write(json)
     ..close();

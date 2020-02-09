@@ -23,7 +23,8 @@ class UpcomingMoviesQuery extends BaseQuery {
   });
 
   @override
-  String toString() => super.toString() + '&region=$region&language=$language&release_date.gte=$releaseDate&page=$page';
+  String toString() =>
+      super.toString() + '&region=$region&language=$language&primary_release_date.gte=$releaseDate&page=$page';
 }
 
 class DetailsQuery extends BaseQuery {
@@ -110,6 +111,7 @@ class MovieDetailsDeserializer {
       body['overview'],
       body['backdrop_path'],
       (body['genres'] as List<dynamic>).map((genre) => genre['name'] as String).toList(),
+      body['runtime'],
     );
   }
 }
