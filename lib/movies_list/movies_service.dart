@@ -113,7 +113,9 @@ class MovieDetailsDeserializer {
         body['backdrop_path'],
         (body['genres'] as List<dynamic>).map((genre) => genre['name'] as String).toList(),
         body['runtime'],
-        (body['credits']['cast'] as List).map((body) => MovieCreditDeserializer().parse(body)).toList()
+        body['credits']['cast'] != null
+            ? (body['credits']['cast'] as List).map((body) => MovieCreditDeserializer().parse(body)).toList()
+            : []
         // ()
         );
   }

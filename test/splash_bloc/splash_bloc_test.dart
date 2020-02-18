@@ -1,4 +1,3 @@
-import 'package:built_collection/built_collection.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movies/models/configuration.dart';
 import 'package:movies/models/image_configuration.dart';
@@ -12,9 +11,10 @@ void main() {
     test('emits finished loading', () async {
       final mockService = ConfigurationServiceMock();
       final configMock = ConfigurationProviderMock();
-      final config = Configuration((b) => b
-        ..imageConfiguration = (ImageConfigurationBuilderAdditions.empty())
-        ..changeKeys = ListBuilder([]));
+      final config = Configuration(
+        [],
+        ImageConfigurationAdditions.empty(),
+      );
 
       when(mockService.fetchImageConfig()).thenAnswer(
         (v) => Future.value(config),

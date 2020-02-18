@@ -15,11 +15,14 @@ void main() {
 
     tearDownAll(() async {
       server.stop();
-      application.stop();
+      await application.stop();
     });
 
     test('movie with id 530915 has details', () async {
-      await (await (await application.mainPage().openHome()).openDetails()).checkContent();
+      final main = application.mainPage();
+      final home = await main.openHome();
+      final details = await home.openDetails();
+      await details.checkContent();
     });
   });
 }

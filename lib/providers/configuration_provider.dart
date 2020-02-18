@@ -1,4 +1,3 @@
-import 'package:built_collection/built_collection.dart';
 import 'package:movies/models/configuration.dart';
 import 'package:movies/models/image_configuration.dart';
 import 'package:movies/splash/configuration_service.dart';
@@ -28,9 +27,8 @@ class ConfigurationProvider {
   MoviesLanguage get currentLanguage => _currentLanguage;
 
   Configuration _config = Configuration(
-    (b) => b
-      ..imageConfiguration = ImageConfigurationBuilderAdditions.empty()
-      ..changeKeys = ListBuilder([]),
+    [],
+    ImageConfigurationAdditions.empty(),
   );
 
   List<MoviesLanguage> _supportedLanguages = [];
@@ -38,15 +36,15 @@ class ConfigurationProvider {
   String _locale = 'en';
 
   String posterBaseUrlFitting(int size) {
-    return _config.imageConfiguration.baseUrl + _findImageSize(size, _config.imageConfiguration.posterSizes.asList());
+    return _config.imageConfiguration.baseUrl + _findImageSize(size, _config.imageConfiguration.posterSizes);
   }
 
   String backdropUrlFitting(int size) {
-    return _config.imageConfiguration.baseUrl + _findImageSize(size, _config.imageConfiguration.backdropSizes.asList());
+    return _config.imageConfiguration.baseUrl + _findImageSize(size, _config.imageConfiguration.backdropSizes);
   }
 
   String profileBaseUrl() {
-    return _config.imageConfiguration.baseUrl + _findImageSize(0, _config.imageConfiguration.posterSizes.asList());
+    return _config.imageConfiguration.baseUrl + _findImageSize(0, _config.imageConfiguration.posterSizes);
   }
 
   String _findImageSize(int size, List<String> imageSizes) {

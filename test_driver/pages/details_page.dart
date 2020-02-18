@@ -8,7 +8,7 @@ class DetailsPage extends BasePage {
   final _storyline = find.byValueKey('story_line');
   final _backdrop = find.byValueKey('backdrop');
   final _runtime = find.byValueKey('runtime');
-  final _genres = ['военный', 'драма', 'история'];
+  final _genres = ['военный', 'драма', 'боевик'];
 
   DetailsPage(FlutterDriver driver) : super(driver);
 

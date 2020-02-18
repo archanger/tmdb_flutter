@@ -1,40 +1,41 @@
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+class ImageConfiguration {
+  // @BuiltValueField(wireName: 'secure_base_url')
+  final String baseUrl;
 
-part 'image_configuration.g.dart';
+  // @BuiltValueField(wireName: 'backdrop_sizes')
+  final List<String> backdropSizes;
 
-abstract class ImageConfiguration implements Built<ImageConfiguration, ImageConfigurationBuilder> {
-  static Serializer<ImageConfiguration> get serializer => _$imageConfigurationSerializer;
+  // @BuiltValueField(wireName: 'logo_sizes')
+  final List<String> logoSizes;
 
-  @BuiltValueField(wireName: 'secure_base_url')
-  String get baseUrl;
+  // @BuiltValueField(wireName: 'poster_sizes')
+  final List<String> posterSizes;
 
-  @BuiltValueField(wireName: 'backdrop_sizes')
-  BuiltList<String> get backdropSizes;
+  // @BuiltValueField(wireName: 'profile_sizes')
+  final List<String> profileSizes;
 
-  @BuiltValueField(wireName: 'logo_sizes')
-  BuiltList<String> get logoSizes;
+  // @BuiltValueField(wireName: 'still_sizes')
+  final List<String> stillSizes;
 
-  @BuiltValueField(wireName: 'poster_sizes')
-  BuiltList<String> get posterSizes;
-
-  @BuiltValueField(wireName: 'profile_sizes')
-  BuiltList<String> get profileSizes;
-
-  @BuiltValueField(wireName: 'still_sizes')
-  BuiltList<String> get stillSizes;
-
-  ImageConfiguration._();
-  factory ImageConfiguration([void Function(ImageConfigurationBuilder) updates]) = _$ImageConfiguration;
+  ImageConfiguration(
+    this.baseUrl,
+    this.backdropSizes,
+    this.logoSizes,
+    this.posterSizes,
+    this.profileSizes,
+    this.stillSizes,
+  );
 }
 
-extension ImageConfigurationBuilderAdditions on ImageConfigurationBuilder {
-  static ImageConfigurationBuilder empty() {
-    return ImageConfigurationBuilder()
-      ..baseUrl = ""
-      ..logoSizes = ListBuilder([])
-      ..posterSizes = ListBuilder([])
-      ..profileSizes = ListBuilder([]);
+extension ImageConfigurationAdditions on ImageConfiguration {
+  static ImageConfiguration empty() {
+    return ImageConfiguration(
+      "",
+      [],
+      [],
+      [],
+      [],
+      [],
+    );
   }
 }

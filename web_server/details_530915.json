@@ -1,6 +1,6 @@
 {
   "adult": false,
-  "backdrop_path": "/tUWivz05fcY14K6RzicRm7IHkUD.jpg",
+  "backdrop_path": "/2WgieNR1tGHlpJUsolbVzbUbE1O.jpg",
   "belongs_to_collection": null,
   "budget": 100000000,
   "genres": [
@@ -13,8 +13,8 @@
       "name": "драма"
     },
     {
-      "id": 36,
-      "name": "история"
+      "id": 28,
+      "name": "боевик"
     }
   ],
   "homepage": "https://www.1917.movie/",
@@ -23,8 +23,8 @@
   "original_language": "en",
   "original_title": "1917",
   "overview": "1917 год, разгар Первой мировой войны. Двум юным молодым солдатам поручают смертельно опасную миссию. Они должны пересечь вражескую территорию и доставить секретное сообщение, которое предотвратит неминуемую гибель сотен солдат… Смогут ли они выиграть гонку со временем?",
-  "popularity": 103.736,
-  "poster_path": "/6o1ssGVf854omPtMyi8EpfT39kv.jpg",
+  "popularity": 125.531,
+  "poster_path": "/9PtIdTW2geKXQbOG17dKLe1JWu4.jpg",
   "production_companies": [
     {
       "id": 1522,
@@ -49,18 +49,6 @@
       "logo_path": "/bAO6cpKP9qoqHoDn4oUjWjZ5auq.png",
       "name": "Amblin Partners",
       "origin_country": "US"
-    },
-    {
-      "id": 7294,
-      "logo_path": "/kK4PRgceWp9KNrycD8xx8seWxYU.png",
-      "name": "Reliance Entertainment",
-      "origin_country": "IN"
-    },
-    {
-      "id": 33,
-      "logo_path": "/8lvHyhjr8oUKOOy2dKXoALWKdp0.png",
-      "name": "Universal Pictures",
-      "origin_country": "US"
     }
   ],
   "production_countries": [
@@ -74,18 +62,482 @@
     }
   ],
   "release_date": "2019-12-10",
-  "revenue": 0,
+  "revenue": 200483309,
   "runtime": 119,
   "spoken_languages": [
     {
       "iso_639_1": "en",
       "name": "English"
+    },
+    {
+      "iso_639_1": "fr",
+      "name": "Français"
+    },
+    {
+      "iso_639_1": "de",
+      "name": "Deutsch"
     }
   ],
   "status": "Released",
   "tagline": "Время — наш главный враг",
   "title": "1917",
   "video": false,
-  "vote_average": 7.8,
-  "vote_count": 115
+  "vote_average": 8.1,
+  "vote_count": 2552,
+  "credits": {
+    "cast": [
+      {
+        "cast_id": 4,
+        "character": "Lance Corporal Schofield",
+        "credit_id": "5bd46f2ac3a36820e901ac22",
+        "gender": 2,
+        "id": 146750,
+        "name": "George MacKay",
+        "order": 0,
+        "profile_path": "/3igGY57QsdJPTChto3ZBDT9vXTg.jpg"
+      },
+      {
+        "cast_id": 5,
+        "character": "Lance Corporal Blake",
+        "credit_id": "5bd46f350e0a2622dd0195dc",
+        "gender": 2,
+        "id": 1332971,
+        "name": "Dean-Charles Chapman",
+        "order": 1,
+        "profile_path": "/A3UGnYH7ESTBwEjWBFev7MhvBsB.jpg"
+      },
+      {
+        "cast_id": 13,
+        "character": "Captain Smith",
+        "credit_id": "5cbe2a11c3a36813698745cc",
+        "gender": 2,
+        "id": 2983,
+        "name": "Mark Strong",
+        "order": 2,
+        "profile_path": "/63AwQg1hz4KQlStZDufhwJdLmT5.jpg"
+      },
+      {
+        "cast_id": 15,
+        "character": "Lieutenant Leslie",
+        "credit_id": "5cbe2a3c92514108d1ff7aed",
+        "gender": 2,
+        "id": 125660,
+        "name": "Andrew Scott",
+        "order": 3,
+        "profile_path": "/3QQdJAMuXSBDK5uuTdgRNwJu1em.jpg"
+      },
+      {
+        "cast_id": 14,
+        "character": "Lieutenant Blake",
+        "credit_id": "5cbe2a340e0a2660dcf28afa",
+        "gender": 2,
+        "id": 512991,
+        "name": "Richard Madden",
+        "order": 4,
+        "profile_path": "/4OBtiwJBBIeffW5XyY8u83ZPyoF.jpg"
+      },
+      {
+        "cast_id": 24,
+        "character": "Lauri",
+        "credit_id": "5d51eba977e1f60017ae5bc6",
+        "gender": 0,
+        "id": 2385743,
+        "name": "Claire Duburcq",
+        "order": 5,
+        "profile_path": "/qS6WwLJb8GlYcIV5Cj16J3RJDE3.jpg"
+      },
+      {
+        "cast_id": 17,
+        "character": "General Erinmore",
+        "credit_id": "5cbe2a57c3a368145881c5d3",
+        "gender": 2,
+        "id": 5472,
+        "name": "Colin Firth",
+        "order": 6,
+        "profile_path": "/4pj31PUxqpuJZrHChinub4gr2ul.jpg"
+      },
+      {
+        "cast_id": 16,
+        "character": "Colonel MacKenzie",
+        "credit_id": "5cbe2a450e0a261a55f3f022",
+        "gender": 2,
+        "id": 71580,
+        "name": "Benedict Cumberbatch",
+        "order": 7,
+        "profile_path": "/wz3MRiMmoz6b5X3oSzMRC9nLxY1.jpg"
+      },
+      {
+        "cast_id": 18,
+        "character": "Sergeant Sanders",
+        "credit_id": "5cbe2a5ec3a368092a8152a0",
+        "gender": 2,
+        "id": 1670,
+        "name": "Daniel Mays",
+        "order": 8,
+        "profile_path": "/1IEMFjJdY8x2Na12Dcn9XJo3rv4.jpg"
+      },
+      {
+        "cast_id": 19,
+        "character": "Major Hepburn",
+        "credit_id": "5cbe2a6e925141097dfa084b",
+        "gender": 2,
+        "id": 40311,
+        "name": "Adrian Scarborough",
+        "order": 9,
+        "profile_path": "/61lXhIEZzSsT38yBro8Rh01GDmA.jpg"
+      },
+      {
+        "cast_id": 20,
+        "character": "Private Bullen",
+        "credit_id": "5cbe2a759251410671fa398d",
+        "gender": 2,
+        "id": 1656685,
+        "name": "Chris Walley",
+        "order": 10,
+        "profile_path": "/qASA1oFOwEvL7epg0HZkPE4SRwc.jpg"
+      },
+      {
+        "cast_id": 21,
+        "character": "Sepoy Jondalar",
+        "credit_id": "5cbe2a7c9251417d39fa4502",
+        "gender": 0,
+        "id": 2152343,
+        "name": "Nabhaan Rizwan",
+        "order": 11,
+        "profile_path": "/dCZSSEg3B8Kkax1uc5FyIhEW3Wm.jpg"
+      },
+      {
+        "cast_id": 22,
+        "character": "Lieutenant Richards",
+        "credit_id": "5cbe2aa4c3a3686b0b8f5c94",
+        "gender": 0,
+        "id": 2294779,
+        "name": "Jamie Parker",
+        "order": 12,
+        "profile_path": null
+      },
+      {
+        "cast_id": 23,
+        "character": "Private Butler",
+        "credit_id": "5cbe2abdc3a3687f8f876541",
+        "gender": 2,
+        "id": 2157935,
+        "name": "Tommy French",
+        "order": 13,
+        "profile_path": "/fDEVG8sRsVuwWdF13Qm8FJT276v.jpg"
+      },
+      {
+        "cast_id": 43,
+        "character": "NCO Baker",
+        "credit_id": "5e18d54cb3f6f50014d31cca",
+        "gender": 0,
+        "id": 1626686,
+        "name": "Paul Tinto",
+        "order": 14,
+        "profile_path": null
+      },
+      {
+        "cast_id": 44,
+        "character": "NCO Harvey",
+        "credit_id": "5e18d581a0be280015feedc2",
+        "gender": 2,
+        "id": 1642036,
+        "name": "Billy Postlethwaite",
+        "order": 15,
+        "profile_path": "/cpHNAqOBP8SIcml1A8ODmtuEyNh.jpg"
+      },
+      {
+        "cast_id": 45,
+        "character": "Colonel Collins",
+        "credit_id": "5e18d608b3f6f50014d32029",
+        "gender": 2,
+        "id": 7025,
+        "name": "Richard McCabe",
+        "order": 16,
+        "profile_path": "/66NC8mYAilfkq6QkVAmmCKp9GQd.jpg"
+      },
+      {
+        "cast_id": 46,
+        "character": "Captain Ivins",
+        "credit_id": "5e18d614b3f6f50014d3204e",
+        "gender": 2,
+        "id": 206724,
+        "name": "Justin Edwards",
+        "order": 17,
+        "profile_path": "/3RKWxwIQ3OYfmlUcTpyRxQHm9M0.jpg"
+      }
+    ],
+    "crew": [
+      {
+        "credit_id": "5d51ec030102c96f397647f2",
+        "department": "Sound",
+        "gender": 2,
+        "id": 153,
+        "job": "Original Music Composer",
+        "name": "Thomas Newman",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5b280c93925141088000158f",
+        "department": "Writing",
+        "gender": 2,
+        "id": 39,
+        "job": "Screenplay",
+        "name": "Sam Mendes",
+        "profile_path": "/5z89X9rB76JDblqMQ52fviwXxAN.jpg"
+      },
+      {
+        "credit_id": "5b280c7892514108be001432",
+        "department": "Directing",
+        "gender": 2,
+        "id": 39,
+        "job": "Director",
+        "name": "Sam Mendes",
+        "profile_path": "/5z89X9rB76JDblqMQ52fviwXxAN.jpg"
+      },
+      {
+        "credit_id": "5c754f6fc3a3684825d35166",
+        "department": "Production",
+        "gender": 2,
+        "id": 39,
+        "job": "Producer",
+        "name": "Sam Mendes",
+        "profile_path": "/5z89X9rB76JDblqMQ52fviwXxAN.jpg"
+      },
+      {
+        "credit_id": "5d51ec12b686b9241298dec0",
+        "department": "Camera",
+        "gender": 2,
+        "id": 151,
+        "job": "Director of Photography",
+        "name": "Roger Deakins",
+        "profile_path": "/pSCN7CfILlfQrxX43Kgqrx5mBYQ.jpg"
+      },
+      {
+        "credit_id": "5d51ec1f0102c96f12764588",
+        "department": "Art",
+        "gender": 2,
+        "id": 4248,
+        "job": "Production Design",
+        "name": "Dennis Gassner",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5c9709570e0a264ccebfcafd",
+        "department": "Editing",
+        "gender": 2,
+        "id": 3904,
+        "job": "Editor",
+        "name": "Lee Smith",
+        "profile_path": "/5XNVKGYwQraa4LYk0pjRhvdC3c1.jpg"
+      },
+      {
+        "credit_id": "5c754f600e0a260b611a3431",
+        "department": "Production",
+        "gender": 2,
+        "id": 10876,
+        "job": "Producer",
+        "name": "Callum McDougall",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5d51ec3a77e1f60013ae64cc",
+        "department": "Art",
+        "gender": 2,
+        "id": 23772,
+        "job": "Art Direction",
+        "name": "Rod McLean",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5c754f30c3a368481cd339ee",
+        "department": "Production",
+        "gender": 1,
+        "id": 34885,
+        "job": "Producer",
+        "name": "Pippa Harris",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5d51ec4db686b9241198dd07",
+        "department": "Costume & Make-Up",
+        "gender": 1,
+        "id": 36591,
+        "job": "Costume Design",
+        "name": "Jacqueline Durran",
+        "profile_path": "/8BzF1gUzKRiZKjjoQm2I50ALDSq.jpg"
+      },
+      {
+        "credit_id": "5d51ec3077e1f60014ae620e",
+        "department": "Art",
+        "gender": 0,
+        "id": 77730,
+        "job": "Art Direction",
+        "name": "Elaine Kusmishko",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e308a0398f1f1000ffea987",
+        "department": "Costume & Make-Up",
+        "gender": 2,
+        "id": 1324461,
+        "job": "Costume Designer",
+        "name": "David Crossman",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e152711028f140013cfb382",
+        "department": "Art",
+        "gender": 0,
+        "id": 1325212,
+        "job": "Set Decoration",
+        "name": "Lee Sandales",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5c754f7d9251416886540ea7",
+        "department": "Production",
+        "gender": 0,
+        "id": 1342669,
+        "job": "Producer",
+        "name": "Jayne-Ann Tenggren",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e1540826262080014c6d0cf",
+        "department": "Sound",
+        "gender": 0,
+        "id": 1345595,
+        "job": "Sound Re-Recording Mixer",
+        "name": "Scott Millan",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5d51ec4377e1f60017ae5d27",
+        "department": "Art",
+        "gender": 0,
+        "id": 1373698,
+        "job": "Art Direction",
+        "name": "Stephen Swain",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e1540cad8af670016c31649",
+        "department": "Sound",
+        "gender": 2,
+        "id": 1393119,
+        "job": "Sound Re-Recording Mixer",
+        "name": "Mark Taylor",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5d51ec2818b75100134636bc",
+        "department": "Art",
+        "gender": 0,
+        "id": 1394061,
+        "job": "Art Direction",
+        "name": "Simon Elsley",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e1d148b4df2910015bf35a5",
+        "department": "Costume & Make-Up",
+        "gender": 0,
+        "id": 1405313,
+        "job": "Prosthetic Designer",
+        "name": "Tristan Versluis",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e15409d9020120013bc7511",
+        "department": "Sound",
+        "gender": 0,
+        "id": 1408373,
+        "job": "Supervising Sound Editor",
+        "name": "Oliver Tarney",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e1525f95907de0014e37f2c",
+        "department": "Costume & Make-Up",
+        "gender": 0,
+        "id": 1409821,
+        "job": "Makeup & Hair",
+        "name": "Naomi Donne",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e1523fa5907de0014e374b0",
+        "department": "Visual Effects",
+        "gender": 0,
+        "id": 1439094,
+        "job": "Visual Effects Supervisor",
+        "name": "Guillaume Rocheron",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e1540b2028f140013d01709",
+        "department": "Sound",
+        "gender": 0,
+        "id": 1459875,
+        "job": "Dialogue Editor",
+        "name": "Rachael Tate",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e1523e25907de0014e3743f",
+        "department": "Visual Effects",
+        "gender": 2,
+        "id": 1472787,
+        "job": "Visual Effects Supervisor",
+        "name": "Greg Butler",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e1d14afd5dbc20015f4a407",
+        "department": "Costume & Make-Up",
+        "gender": 0,
+        "id": 1525893,
+        "job": "Makeup & Hair",
+        "name": "Rebecca Cole",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5e15240f9020120013bc3494",
+        "department": "Visual Effects",
+        "gender": 0,
+        "id": 1545988,
+        "job": "Special Effects Supervisor",
+        "name": "Dominic Tuohy",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5c754f4fc3a3684825d350eb",
+        "department": "Production",
+        "gender": 2,
+        "id": 1563756,
+        "job": "Producer",
+        "name": "Michael Lerman",
+        "profile_path": "/pQ1ZbVYkHiFy8tumDvJg2TaLRnX.jpg"
+      },
+      {
+        "credit_id": "5e1540db9020120013bc7553",
+        "department": "Sound",
+        "gender": 2,
+        "id": 1568519,
+        "job": "Production Sound Mixer",
+        "name": "Stuart Wilson",
+        "profile_path": null
+      },
+      {
+        "credit_id": "5b280c8b0e0a2677af001943",
+        "department": "Writing",
+        "gender": 0,
+        "id": 1643383,
+        "job": "Screenplay",
+        "name": "Krysty Wilson-Cairns",
+        "profile_path": null
+      }
+    ]
+  }
 }
